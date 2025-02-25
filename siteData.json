@@ -136,6 +136,14 @@
       "headingKeywords": {}
     },
     {
+      "src": "team/clif.md",
+      "title": "Clif's Project Portfolio Page",
+      "headings": {
+        "project": "Project:"
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "team/johndoe.md",
       "title": "John Doe's Project Portfolio Page",
       "headings": {
