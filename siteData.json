@@ -8,7 +8,7 @@
         "about-us": "About Us",
         "project-team": "Project team",
         "john-doe": "John Doe",
-        "jane-doe": "Jane Doe",
+        "clif-ong": "Clif ong",
         "johnny-doe": "Johnny Doe",
         "jean-doe": "Jean Doe",
         "james-doe": "James Doe"
@@ -137,6 +137,14 @@
     },
     {
       "src": "team/clif.md",
+      "title": "Clif's Project Portfolio Page",
+      "headings": {
+        "project": "Project:"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/clifong.md",
       "title": "Clif's Project Portfolio Page",
       "headings": {
         "project": "Project:"
