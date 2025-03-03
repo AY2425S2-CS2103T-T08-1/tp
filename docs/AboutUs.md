@@ -11,21 +11,20 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Stanley Beh
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/ziliangstanley.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/ziliangstanley)]
+[[portfolio](team/clifong.md)]
 
-* Role: Project Advisor
+* Role: Project maker
 
-### Jane Doe
+### Clif ong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/clifong.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/clifong)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
@@ -40,22 +39,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Jensen Teo
 
 <img src="images/jensen188.png" width="200px">
-
-[[github](http://github.com/jensen188)]
-[[portfolio](team/jensen188.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Dev Ops + Threading
+
+### San Shao Qian
+
+<img src="images/sanshaoqian.png" width="200px">
+
+[[github](https://github.com/SanShaoQian)]
+[[portfolio](team/sanshaoqian.md)]
+
+* Role: Developer
+* Responsibilities: Data
