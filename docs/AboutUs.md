@@ -42,7 +42,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Jean Doe
 
-<img src="image/jensen188.png" width="200px">
+<img src="images/jensen188.png" width="200px">
 
 [[github](http://github.com/jensen188)]
 [[portfolio](team/jensen188.md)]
