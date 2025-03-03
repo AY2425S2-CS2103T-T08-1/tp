@@ -11,17 +11,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Stanley Beh
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/clifong.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/clifong)]
+[[portfolio](team/clifong.md)]
 
-* Role: Project Advisor
+* Role: Project maker
 
-### Jane Doe
+### Clif ong
 
 <img src="images/johndoe.png" width="200px">
 
@@ -42,9 +41,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Jensen Teo
 
-<img src="images/jensen188.png" width="200px">
+<img src="image/jensen188.png" width="200px">
 
-[[github](http://github.com/jensen188.png)]
+[[github](http://github.com/jensen188)]
 [[portfolio](team/jensen188.md)]
 
 * Role: Developer
