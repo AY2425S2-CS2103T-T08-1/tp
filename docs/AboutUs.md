@@ -13,18 +13,18 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Stanley Beh
 
-<img src="images/clifong.png" width="200px">
+<img src="images/ziliangstanley.png" width="200px">
 
-[[github](https://github.com/clifong)]
+[[github](https://github.com/ziliangstanley)]
 [[portfolio](team/clifong.md)]
 
 * Role: Project maker
 
 ### Clif ong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/clifong.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/clifong)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
