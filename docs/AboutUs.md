@@ -11,20 +11,20 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Stanley Beh
 
-<img src="images/clifong.png" width="200px">
+<img src="images/ziliangstanley.png" width="200px">
 
-[[github](https://github.com/clifong)]
+[[github](https://github.com/ziliangstanley)]
 [[portfolio](team/clifong.md)]
 
 * Role: Project maker
 
 ### Clif ong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/clifong.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/clifong)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
@@ -39,12 +39,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Do
+### Jensen Teo
 
-<img src="images/johndoe.png" width="200px">
+<img src="image/jensen188.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jensen188)]
+[[portfolio](team/jensen188.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
