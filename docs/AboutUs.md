@@ -13,7 +13,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Stanley Beh
 
-<img src="images/clifong.png" width="200px">
+<img src="images/ziliangstanley.png" width="200px">
 
 [[github](https://github.com/clifong)]
 [[portfolio](team/clifong.md)]
@@ -22,7 +22,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Clif ong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/clifong.png" width="200px">
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
