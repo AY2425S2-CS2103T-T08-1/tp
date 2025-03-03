@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Stanley Beh
 
 <img src="images/clifong.png" width="200px">
 
