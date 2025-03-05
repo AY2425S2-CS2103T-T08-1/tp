@@ -136,6 +136,14 @@
       "headingKeywords": {}
     },
     {
+      "src": "jensen188.md",
+      "title": "John Doe's Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "team/clif.md",
       "title": "Clif's Project Portfolio Page",
       "headings": {
