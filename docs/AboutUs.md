@@ -43,8 +43,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/jensen188.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jensen188)]
+[[portfolio](team/jensen188.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
