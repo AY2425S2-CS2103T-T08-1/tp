@@ -274,71 +274,115 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* Restaurant owners who want to keep track of their clientele and regular customers
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: 
+* Improve the quality of service for customers by enabling regulars to contact easily their favourite restaurant
+* Increase interpersonal relationships with customers by keeping track of their preferences
+
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
-
+| Priority | As a …​          | I want to …​                                                                         | So that I can…​                                  |
+|----------|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------|
+| `* * *`  | Restaurant owner | add new customers to the address book                                                | keep track of their contact details              |
+| `* * *`  | Restaurant owner | edit customer details                                                                | update their contact information when necessary. |
+| `* * *`  | Restaurant owner | delete customer records                                                              | remove outdated or incorrect information         |
+| `* * *`  | Restaurant owner | tag customers with labels (e.g., VIP, Regular, New)                                  | personalize their experience                     |
+| `* * *`  | Restaurant owner | store customer preferences and allergies                                             | provide a personalized dining experience.        |
+| `* *`    | Restaurant owner | customer feedback and complaints                                                     | improve my restaurant’s service                  |
+| `* *`    | Restaurant owner | see a customer’s past orders                                                         | recommend seasonal dishes they might enjoy       |
+| `* *`    | Restaurant owner | group customers by dining preferences (e.g., vegetarian, wine lovers, family diners) | offer them relevant recommendations              |
+| `* *`    | Restaurant owner | track customer satisfaction scores based on their feedback                           | improve my service.                              |
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `BiteBook` and the **Actor** is the `Restaurant owner`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add new customers to the address book **
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User enters into the command line (ADD Tom 123456789)
+2.  The contact information is added into the address book with a success text
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The same centry exists (i.e same name and number)
+
+    * 1a1. Bitebook shows an error message.
+
+*{More to be added}*
+
+**Use case: Delete customers in the address book **
+
+**MSS**
+
+1.  User list all customers
+2.  User enters into the command line (DELETE 1)
+3.  The first contact information is deleted
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 2a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 2a1. Bitebook shows an error message.
 
       Use case resumes at step 2.
 
-*{More to be added}*
+**Use case: Tag customers with labels (e.g., VIP, Regular, New)  **
+
+**MSS**
+
+1.  User list all customers
+2.  User enters into the command line (TAG 1 VIP)
+3.  The first contact information is tagged with VIP
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+    * 2a1. Bitebook shows an error message.
+
+* 2b. The tag is invalid/
+
+    * 2b1. Bitebook shows an error message.
+
+      Use case resumes at step 2.
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+4.  The response to any use action should become visible within 5 seconds.
+5.  The source code should be open source.
+6.  The user interface should be intuitive enough for users who are not IT-savvy.
+7.  The product is offered as a free online service.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Tags**: A marker flavpur text for each customer (E.g VIP)
 
 --------------------------------------------------------------------------------------------------------------------
 
