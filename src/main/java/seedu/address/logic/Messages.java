@@ -40,8 +40,7 @@ public class Messages {
                 .append("; Phone: ")
                 .append(person.getPhone())
                 .append("; Email: ")
-                .append("; Tags: ");
-        person.getTags().forEach(builder::append);
+                .append("; Tag: ");
         return builder.toString();
     }
 

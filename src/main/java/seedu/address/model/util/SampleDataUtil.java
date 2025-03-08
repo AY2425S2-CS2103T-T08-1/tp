@@ -1,6 +1,7 @@
 package seedu.address.model.util;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,17 +18,17 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[] {
-            new Person(new Name("Alex Yeoh"), new Phone("87438807"), getTagSet("friends")),
+            new Person(new Name("Alex Yeoh"), new Phone("87438807"), Optional.of(new Tag("VIP"))),
             new Person(new Name("Bernice Yu"), new Phone("99272758"),
-                getTagSet("colleagues", "friends")),
+                Optional.of(new Tag("New"))),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"),
-                getTagSet("neighbours")),
+                Optional.of(new Tag("Regular"))),
             new Person(new Name("David Li"), new Phone("91031282"),
-                getTagSet("family")),
+                Optional.empty()),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"),
-                getTagSet("classmates")),
+                Optional.of(new Tag("New"))),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"),
-                getTagSet("colleagues"))
+            Optional.empty())
         };
     }
 
