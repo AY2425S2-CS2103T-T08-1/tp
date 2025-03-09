@@ -30,7 +30,6 @@ public class TagCommand extends Command{
             + "t/ VIP";
 
     public static final String MESSAGE_SUCCESS = "Customer %s tagged as %s";
-    public static final String MESSAGE_INVALID_TAG = "Invalid tag. Allowed values: VIP, Regular, New.";
     public static final String MESSAGE_INVALID_INDEX = "The index is outside the acceptable range!";
 
     private final Index index;

@@ -34,8 +34,8 @@ public class TagCommandParser implements Parser<TagCommand> {
                     TagCommand.MESSAGE_USAGE), ive);
         }
 
-        String remark = argMultimap.getValue(PREFIX_TAG).orElse("");
+        String tag = argMultimap.getValue(PREFIX_TAG).orElse("");
 
-        return new TagCommand(index, remark);
+        return new TagCommand(index, tag);
     }
 }
