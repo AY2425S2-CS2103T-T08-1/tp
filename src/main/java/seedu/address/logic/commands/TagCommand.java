@@ -17,7 +17,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Tags a customer in the address book.
  */
-public class TagCommand extends Command{
+public class TagCommand extends Command {
     public static final String COMMAND_WORD = "tag";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
