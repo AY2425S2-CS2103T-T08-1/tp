@@ -10,11 +10,9 @@ import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_VIP;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REGULAR;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_VIP;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REGULAR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -41,7 +39,8 @@ public class AddCommandParserTest {
         Person expectedPerson = new PersonBuilder(BOB).withTag(VALID_TAG_REGULAR).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB + TAG_DESC_REGULAR, new AddCommand(expectedPerson));
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB
+                + PHONE_DESC_BOB + TAG_DESC_REGULAR, new AddCommand(expectedPerson));
 
 
         // multiple tags - all accepted

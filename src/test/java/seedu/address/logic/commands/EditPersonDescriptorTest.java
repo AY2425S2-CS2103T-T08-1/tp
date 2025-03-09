@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -46,12 +45,12 @@ public class EditPersonDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 
-//        @Test
-//        public void toStringMethod() {
-//            EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-//            String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
-//                    + editPersonDescriptor.getName().orElse(null) + ", phone="
-//                    + editPersonDescriptor.getTag().orElse(null) + "}";
-//            assertEquals(expected, editPersonDescriptor.toString());
-//    }
+        @Test
+        public void toStringMethod() {
+            EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+            String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
+                    + editPersonDescriptor.getName().orElse(null) + ", phone="
+                    + editPersonDescriptor.getTag().orElse(null) + "}";
+            assertEquals(expected, editPersonDescriptor.toString());
+    }
 }

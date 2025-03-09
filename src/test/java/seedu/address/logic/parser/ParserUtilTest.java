@@ -1,12 +1,11 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
-import java.util.*;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
@@ -117,7 +116,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTag_validEmptyStringTag_returnsEmptyOptional() throws Exception{
+    public void parseTag_validEmptyStringTag_returnsEmptyOptional() throws Exception {
         String emptyTag = "";
         Optional<Tag> expectedTag = Optional.empty();
         assertEquals(expectedTag, ParserUtil.parseTag(emptyTag));

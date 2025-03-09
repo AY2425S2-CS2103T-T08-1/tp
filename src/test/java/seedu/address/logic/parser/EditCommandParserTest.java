@@ -12,7 +12,6 @@ import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REGULAR;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_VIP;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REGULAR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -89,7 +88,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
-        String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_REGULAR+ NAME_DESC_AMY + TAG_DESC_VIP;
+        String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_REGULAR + NAME_DESC_AMY + TAG_DESC_VIP;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB)
