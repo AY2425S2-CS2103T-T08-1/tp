@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -9,6 +11,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Preference;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -21,16 +24,18 @@ class JsonAdaptedPerson {
     private final String name;
     private final String phone;
     private final String tag;
+    private final String preference;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("tag") String tag) {
+            @JsonProperty("tag") String tag, @JsonProperty("preference") String preference) {
         this.name = name;
         this.phone = phone;
         this.tag = tag;
+        this.preference = preference;
     }
 
     /**
@@ -40,6 +45,7 @@ class JsonAdaptedPerson {
         name = source.getName().fullName;
         phone = source.getPhone().value;
         tag = source.getTag().map(Tag::toString).orElse("");
+        preference = source.getPreference().toString();
     }
 
     /**
@@ -75,7 +81,14 @@ class JsonAdaptedPerson {
 
         final Optional<Tag> modelTag = Optional.ofNullable(tag != "" ? new Tag(tag) : null);
 
-        return new Person(modelName, modelPhone, modelTag);
+        if (preference == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Preference"));
+        }
+
+        List<String> list = Arrays.asList(preference.substring(1, preference.length() - 1).split(", "));
+        final Preference modelPreference = new Preference(list);
+
+        return new Person(modelName, modelPhone, modelTag, modelPreference);
     }
 
 }
