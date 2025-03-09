@@ -6,7 +6,7 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REGULAR;
 
 import org.junit.jupiter.api.Test;
 
@@ -42,15 +42,16 @@ public class EditPersonDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTag(VALID_TAG_REGULAR).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
-    //    @Test
-    //    public void toStringMethod() {
-    //        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-    //        String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
-    //                + editPersonDescriptor.getName().orElse(null) + ", phone="
-    //                + editPersonDescriptor.getTags().orElse(null) + "}";
-    //        assertEquals(expected, editPersonDescriptor.toString());
-    //}
+
+//        @Test
+//        public void toStringMethod() {
+//            EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+//            String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
+//                    + editPersonDescriptor.getName().orElse(null) + ", phone="
+//                    + editPersonDescriptor.getTag().orElse(null) + "}";
+//            assertEquals(expected, editPersonDescriptor.toString());
+//    }
 }

@@ -31,6 +31,7 @@ public class TagCommand extends Command{
 
     public static final String MESSAGE_SUCCESS = "Customer %s tagged as %s";
     public static final String MESSAGE_INVALID_INDEX = "The index is outside the acceptable range!";
+    public static final String MESSAGE_CONSTRAINTS = "Tag must be either VIP, Regular or New";
 
     private final Index index;
     private final String tag;
@@ -52,11 +53,18 @@ public class TagCommand extends Command{
             throw new CommandException(MESSAGE_INVALID_INDEX);
         }
 
-        Tag newTag = new Tag(tag);
+        Optional<Tag> newTag = Optional.empty();
+
+        if (!tag.equals(""))
+            if (!Tag.isValidTagName(tag)) {
+                throw new CommandException(MESSAGE_CONSTRAINTS);
+            } else {
+                newTag = Optional.of(new Tag(tag));
+        }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(
-                personToEdit.getName(), personToEdit.getPhone(), Optional.of(newTag));
+                personToEdit.getName(), personToEdit.getPhone(), newTag);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

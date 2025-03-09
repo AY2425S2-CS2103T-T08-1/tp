@@ -20,14 +20,14 @@ class JsonAdaptedPerson {
 
     private final String name;
     private final String phone;
-    private final Optional<JsonAdaptedTag> tag;
+    private final String tag;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("tag") Optional<JsonAdaptedTag> tag) {
+            @JsonProperty("tag") String tag) {
         this.name = name;
         this.phone = phone;
         this.tag = tag;
@@ -39,7 +39,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
         phone = source.getPhone().value;
-        tag = source.getTag().map(JsonAdaptedTag::new);
+        tag = source.getTag().map(Tag::toString).orElse("");
     }
 
     /**
@@ -65,7 +65,15 @@ class JsonAdaptedPerson {
         }
         final Phone modelPhone = new Phone(phone);
 
-        final Optional<Tag> modelTag = Optional.ofNullable(tag.isPresent() ? tag.get().toModelType() : null);
+        if (tag == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Tag.class.getSimpleName()));
+        }
+
+        if (tag != "" && !Tag.isValidTagName(tag)) {
+            throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
+        }
+
+        final Optional<Tag> modelTag = Optional.ofNullable(tag != "" ? new Tag(tag) : null);
 
         return new Person(modelName, modelPhone, modelTag);
     }

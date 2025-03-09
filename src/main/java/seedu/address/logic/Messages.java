@@ -35,13 +35,7 @@ public class Messages {
      * Formats the {@code person} for display to the user.
      */
     public static String format(Person person) {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
-                .append("; Phone: ")
-                .append(person.getPhone())
-                .append("; Email: ")
-                .append("; Tag: ");
-        return builder.toString();
+        return String.format("%s (%s)", person.getName(), person.getPhone());
     }
 
 }

@@ -11,6 +11,14 @@ public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS = "Invalid tag. Allowed values: VIP, Regular, New.";
 
+    public enum CustomerType {
+        VIP, REGULAR, NEW;
+
+        public static CustomerType fromString(String str) {
+            return CustomerType.valueOf(str.toUpperCase());
+        }
+    }
+
     public final CustomerType tagName;
 
     /**
@@ -60,7 +68,7 @@ public class Tag {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + tagName.toString() + ']';
+        return tagName.toString();
     }
 
 }
