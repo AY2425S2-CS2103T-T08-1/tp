@@ -14,7 +14,6 @@ public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_TAG = "REGULAR";
 
     private Name name;
     private Phone phone;
@@ -26,7 +25,7 @@ public class PersonBuilder {
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
-        tag = Optional.of(new Tag(DEFAULT_TAG));
+        tag = Optional.empty();
     }
 
     /**
