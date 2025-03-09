@@ -11,6 +11,9 @@ public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS = "Invalid tag. Allowed values: VIP, Regular, New.";
 
+    /**
+     * The tag name must be either VIP, Regular or New.
+     */
     public enum CustomerType {
         VIP, REGULAR, NEW;
 

@@ -1,18 +1,18 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+import java.util.List;
+import java.util.Optional;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
-
-import java.util.List;
-import java.util.Optional;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 /**
  * Tags a customer in the address book.
@@ -36,6 +36,10 @@ public class TagCommand extends Command{
     private final Index index;
     private final String tag;
 
+    /**
+     * @param index of the person in the filtered person list to tag
+     * @param tag name of the tag to be added
+     */
     public TagCommand(Index index, String tag) {
         requireAllNonNull(index, tag);
 
@@ -55,11 +59,12 @@ public class TagCommand extends Command{
 
         Optional<Tag> newTag = Optional.empty();
 
-        if (!tag.equals(""))
-            if (!Tag.isValidTagName(tag)) {
-                throw new CommandException(MESSAGE_CONSTRAINTS);
-            } else {
-                newTag = Optional.of(new Tag(tag));
+        if (!tag.equals("") && !Tag.isValidTagName(tag)) {
+            throw new CommandException(MESSAGE_CONSTRAINTS);
+        }
+
+        if (!tag.equals("")) {
+            newTag = Optional.of(new Tag(tag));
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
