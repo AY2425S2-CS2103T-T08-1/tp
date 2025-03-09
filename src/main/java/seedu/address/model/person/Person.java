@@ -18,15 +18,17 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Optional<Tag> tag;
+    private final Preference preference;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Optional<Tag> tag) {
-        requireAllNonNull(name, phone, tag);
+    public Person(Name name, Phone phone, Optional<Tag> tag, Preference preference) {
+        requireAllNonNull(name, phone, tag, preference);
         this.name = name;
         this.phone = phone;
         this.tag = tag;
+        this.preference = preference;
     }
 
     public Name getName() {
@@ -41,6 +43,10 @@ public class Person {
         return tag;
     }
 
+    public Preference getPreference() {
+        return preference;
+    }
+
     /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
@@ -53,7 +59,8 @@ public class Person {
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone())
-                && otherPerson.getTag().equals(getTag());
+                && otherPerson.getTag().equals(getTag())
+                && otherPerson.getPreference().equals(getPreference());
     }
 
     /**
@@ -74,13 +81,14 @@ public class Person {
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
-                && tag.equals(otherPerson.tag);
+                && tag.equals(otherPerson.tag)
+                && preference.equals(otherPerson.preference);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, tag);
+        return Objects.hash(name, phone, tag, preference);
     }
 
     @Override
@@ -89,6 +97,7 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("tag", tag)
+                .add("preferences", preference)
                 .toString();
     }
 

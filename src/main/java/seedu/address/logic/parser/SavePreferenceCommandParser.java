@@ -1,0 +1,38 @@
+package seedu.address.logic.parser;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.SavePreferenceCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERENCE;
+
+/**
+ * Parses input arguments and creates a new SavePreferenceCommand object
+ */
+public class SavePreferenceCommandParser implements Parser<SavePreferenceCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the SavePreferenceCommand
+     * and returns a SavePreferenceCommand object for execution.
+     */
+    public SavePreferenceCommand parse(String args) throws ParseException {
+        requireNonNull(args);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_PREFERENCE);
+
+        Index index;
+
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (IllegalValueException ive) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SavePreferenceCommand.MESSAGE_USAGE), ive);
+        }
+
+        String preference = argMultimap.getValue(PREFIX_PREFERENCE).orElse("");
+
+        return new SavePreferenceCommand(index,preference);
+    }
+
+}

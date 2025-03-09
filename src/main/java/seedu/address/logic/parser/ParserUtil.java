@@ -2,6 +2,9 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
@@ -9,6 +12,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Preference;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -77,5 +81,24 @@ public class ParserUtil {
             return Optional.empty();
         }
         return Optional.of(new Tag(trimmedTag));
+    }
+
+    /**
+     * Parses a {@code String preference} into a {@code Preference}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code preference} is invalid.
+     */
+    public static Preference parsePreference(String... preference) throws ParseException {
+        requireNonNull(preference);
+        List<String> preferenceList = new ArrayList<>();
+        for (String pref : preference) {
+            String trimmedPreference = pref.trim();
+            if (!Preference.isValidPreference(trimmedPreference)) {
+                throw new ParseException(Preference.MESSAGE_CONSTRAINTS);
+            }
+            preferenceList.add(trimmedPreference);
+        }
+        return new Preference(preferenceList);
     }
 }

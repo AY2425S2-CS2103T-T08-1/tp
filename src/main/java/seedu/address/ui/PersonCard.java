@@ -33,6 +33,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
+    private Label preference;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -45,5 +47,7 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         person.getTag().ifPresent(tag -> tags.getChildren().add(new Label(tag.tagName.toString())));
+        String preferenceString = person.getPreference().toString();
+        preference.setText("Dietary Preferences: " + preferenceString.substring(1, preferenceString.length() - 1));
     }
 }

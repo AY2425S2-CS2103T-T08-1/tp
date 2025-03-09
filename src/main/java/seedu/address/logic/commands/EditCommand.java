@@ -19,6 +19,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Preference;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -88,8 +89,9 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Optional<Tag> updatedTag = editPersonDescriptor.getTag().orElse(personToEdit.getTag());
+        Preference updatedPreference = editPersonDescriptor.getPreference().orElse(personToEdit.getPreference());
 
-        return new Person(updatedName, updatedPhone, updatedTag);
+        return new Person(updatedName, updatedPhone, updatedTag, updatedPreference);
     }
 
     @Override
@@ -124,6 +126,7 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Optional<Tag> tag;
+        private Preference preference;
 
         public EditPersonDescriptor() {}
 
@@ -175,6 +178,14 @@ public class EditCommand extends Command {
          */
         public Optional<Optional<Tag>> getTag() {
             return (tag != null) ? Optional.of(tag) : Optional.empty();
+        }
+
+        public void setPreference(Preference preference) {
+            this.preference = preference;
+        }
+
+        public Optional<Preference> getPreference() {
+            return Optional.ofNullable(preference);
         }
 
         @Override
