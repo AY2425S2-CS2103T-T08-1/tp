@@ -2,10 +2,8 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
+import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
@@ -19,16 +17,16 @@ public class Person {
     // Identity fields
     private final Name name;
     private final Phone phone;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Optional<Tag> tag;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Set<Tag> tags) {
-        requireAllNonNull(name, phone, tags);
+    public Person(Name name, Phone phone, Optional<Tag> tag) {
+        requireAllNonNull(name, phone, tag);
         this.name = name;
         this.phone = phone;
-        this.tags.addAll(tags);
+        this.tag = tag;
     }
 
     public Name getName() {
@@ -39,12 +37,8 @@ public class Person {
         return phone;
     }
 
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Optional<Tag> getTag() {
+        return tag;
     }
 
     /**
@@ -58,7 +52,8 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && otherPerson.getPhone().equals(getPhone());
+                && otherPerson.getPhone().equals(getPhone())
+                && otherPerson.getTag().equals(getTag());
     }
 
     /**
@@ -78,13 +73,14 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone);
+                && phone.equals(otherPerson.phone)
+                && tag.equals(otherPerson.tag);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone);
+        return Objects.hash(name, phone, tag);
     }
 
     @Override
@@ -92,7 +88,7 @@ public class Person {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("phone", phone)
-                .add("tags", tags)
+                .add("tag", tag)
                 .toString();
     }
 
