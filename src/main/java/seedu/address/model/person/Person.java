@@ -97,7 +97,7 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("tag", tag)
-                .add("preferences", preference)
+                .add("preference", preference)
                 .toString();
     }
 

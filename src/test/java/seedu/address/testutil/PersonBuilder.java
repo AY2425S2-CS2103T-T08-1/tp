@@ -1,10 +1,12 @@
 package seedu.address.testutil;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Preference;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -18,6 +20,7 @@ public class PersonBuilder {
     private Name name;
     private Phone phone;
     private Optional<Tag> tag;
+    private Preference preference;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -26,6 +29,7 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         tag = Optional.empty();
+        preference = new Preference();
     }
 
     /**
@@ -35,6 +39,7 @@ public class PersonBuilder {
         name = personToCopy.getName();
         phone = personToCopy.getPhone();
         tag = personToCopy.getTag();
+        preference = personToCopy.getPreference();
     }
 
     /**
@@ -61,8 +66,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Preference} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withPreference(String... preference) {
+        this.preference = new Preference(Arrays.asList(preference));
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, tag);
+        return new Person(name, phone, tag, preference);
     }
 
 }
