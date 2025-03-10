@@ -36,9 +36,14 @@ public class AddCommandParser implements Parser<AddCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Optional<Tag> tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
-        Preference preference = ParserUtil.parsePreference(argMultimap.getValue(PREFIX_PREFERENCE).get());
-
+        Optional<Tag> tag = Optional.empty();
+        if (argMultimap.getValue(PREFIX_TAG).isPresent()) {
+            tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
+        }
+        Preference preference = new Preference();
+        if (argMultimap.getValue(PREFIX_PREFERENCE).isPresent()) {
+            ParserUtil.parsePreference(argMultimap.getValue(PREFIX_PREFERENCE).get());
+        }
         Person person = new Person(name, phone, tag, preference);
 
         return new AddCommand(person);
