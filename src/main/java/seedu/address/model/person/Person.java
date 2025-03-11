@@ -71,7 +71,8 @@ public class Person {
      * @param dish The name of the dish ordered.
      */
     public void addOrder(String dish) {
-        orderHistory.put(dish, orderHistory.getOrDefault(dish, 0) + 1);
+        String normalizedDish = dish.trim().toLowerCase().replaceAll("\\s+", ""); // Normalize dish name
+        orderHistory.put(normalizedDish, orderHistory.getOrDefault(normalizedDish, 0) + 1);
     }
     /**
      * Returns the order history of the customer as a mapping of dish names to their frequency.
