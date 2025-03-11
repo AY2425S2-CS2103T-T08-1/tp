@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -35,6 +37,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label preference;
     @FXML
+    private Label topDishes;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -49,5 +53,8 @@ public class PersonCard extends UiPart<Region> {
         person.getTag().ifPresent(tag -> tags.getChildren().add(new Label(tag.tagName.toString())));
         String preferenceString = person.getPreference().toString();
         preference.setText("Dietary Preferences: " + preferenceString.substring(1, preferenceString.length() - 1));
+        List<String> topDishesList = person.getTopDishes();
+        String topDishesText = topDishesList.isEmpty() ? "No orders yet" : "Top Dishes: " + String.join(", ", topDishesList);
+        topDishes.setText(topDishesText);
     }
 }
