@@ -21,6 +21,7 @@ public class Person {
     // Identity fields
     private final Name name;
     private final Phone phone;
+    private final Remark remark;
     private final Optional<Tag> tag;
     private final Preference preference;
     private final HashMap<String, Integer> orderHistory; // Stores dish names and their frequencies
@@ -28,11 +29,12 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Optional<Tag> tag, Preference preference) {
+    public Person(Name name, Phone phone, Remark remark, Optional<Tag> tag, Preference preference) {
         requireAllNonNull(name, phone, tag, preference);
         this.name = name;
         this.phone = phone;
         this.tag = tag;
+        this.remark = remark;
         this.preference = preference;
         this.orderHistory = new HashMap<>();
     }
@@ -46,6 +48,7 @@ public class Person {
         this.tag = other.tag;
         this.preference = other.preference;
         this.orderHistory = new HashMap<>(other.orderHistory); // Copy the existing order history
+        this.remark = other.remark;
     }
 
     public Name getName() {
@@ -94,6 +97,10 @@ public class Person {
                 .limit(3) // Get top 3 dishes
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
+    }
+
+    public Remark getRemark() {
+        return remark;
     }
 
     /**

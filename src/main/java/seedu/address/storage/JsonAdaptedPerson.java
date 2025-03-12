@@ -15,6 +15,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Preference;
+import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -97,7 +98,9 @@ class JsonAdaptedPerson {
         List<String> list = Arrays.asList(preference.substring(1, preference.length() - 1).split(", "));
         final Preference modelPreference = new Preference(list);
 
-        Person person = new Person(modelName, modelPhone, modelTag, modelPreference);
+        final Remark modelRemark = new Remark(""); //TODO: Implement parsing and marshalling in the storage commit.
+
+        Person person = new Person(modelName, modelPhone, modelRemark, modelTag, modelPreference);
 
         // Restore the order history into the person object
         for (Map.Entry<String, Integer> entry : orderHistory.entrySet()) {

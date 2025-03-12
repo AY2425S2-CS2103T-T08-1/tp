@@ -35,6 +35,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
+    private Label remark;
+    @FXML
     private Label preference;
     @FXML
     private Label topDishes;
@@ -56,5 +58,6 @@ public class PersonCard extends UiPart<Region> {
         List<String> topDishesList = person.getTopDishes();
         String topDishesText = topDishesList.isEmpty() ? "No orders yet" : "Top Dishes: " + String.join(", ", topDishesList);
         topDishes.setText(topDishesText);
+        remark.setText(person.getRemark().value);
     }
 }

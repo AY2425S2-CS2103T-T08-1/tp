@@ -12,6 +12,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Preference;
+import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -44,7 +45,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         if (argMultimap.getValue(PREFIX_PREFERENCE).isPresent()) {
             ParserUtil.parsePreference(argMultimap.getValue(PREFIX_PREFERENCE).get());
         }
-        Person person = new Person(name, phone, tag, preference);
+        Remark remark = new Remark(""); // add command does not allow adding remarks straight away
+        Person person = new Person(name, phone, remark, tag, preference);
 
         return new AddCommand(person);
     }

@@ -7,6 +7,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Preference;
+import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -16,11 +17,13 @@ public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_REMARK = "";
 
     private Name name;
     private Phone phone;
     private Optional<Tag> tag;
     private Preference preference;
+    private Remark remark;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -29,6 +32,7 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         tag = Optional.empty();
+        remark = new Remark(DEFAULT_REMARK);
         preference = new Preference();
     }
 
@@ -39,6 +43,7 @@ public class PersonBuilder {
         name = personToCopy.getName();
         phone = personToCopy.getPhone();
         tag = personToCopy.getTag();
+        remark = personToCopy.getRemark();
         preference = personToCopy.getPreference();
     }
 
@@ -74,8 +79,13 @@ public class PersonBuilder {
         return this;
     }
 
+    public PersonBuilder withRemark(String remark) {
+        this.remark = new Remark(remark);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, tag, preference);
+        return new Person(name, phone, remark, tag, preference);
     }
 
 }

@@ -20,6 +20,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Preference;
+import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -90,8 +91,9 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Optional<Tag> updatedTag = editPersonDescriptor.getTag().orElse(personToEdit.getTag());
         Preference updatedPreference = editPersonDescriptor.getPreference().orElse(personToEdit.getPreference());
+        Remark updatedRemark = personToEdit.getRemark();
 
-        return new Person(updatedName, updatedPhone, updatedTag, updatedPreference);
+        return new Person(updatedName, updatedPhone, updatedRemark, updatedTag, updatedPreference);
     }
 
     @Override
