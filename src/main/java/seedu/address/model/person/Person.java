@@ -47,7 +47,10 @@ public class Person {
         return preference;
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
     public void addPreference(String preference) {
         this.preference.addPreference(preference);
