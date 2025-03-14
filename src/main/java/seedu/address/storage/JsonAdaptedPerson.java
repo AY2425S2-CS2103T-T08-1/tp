@@ -1,16 +1,11 @@
 package seedu.address.storage;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-=======
-=======
->>>>>>> Stashed changes
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.stream.Collectors;
->>>>>>> Stashed changes
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,17 +28,22 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String tag;
     private final String preference;
+    private final Map<String, Integer> orderHistory; // Stores dish names and their order frequencies
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("tag") String tag, @JsonProperty("preference") String preference) {
+    public JsonAdaptedPerson(@JsonProperty("name") String name,
+                             @JsonProperty("phone") String phone,
+                             @JsonProperty("tag") String tag,
+                             @JsonProperty("preference") String preference,
+                             @JsonProperty("orderHistory") Map<String, Integer> orderHistory) {
         this.name = name;
         this.phone = phone;
         this.tag = tag;
         this.preference = preference;
+        this.orderHistory = (orderHistory != null) ? new HashMap<>(orderHistory) : new HashMap<>();
     }
 
     /**
@@ -54,6 +54,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         tag = source.getTag().map(Tag::toString).orElse("");
         preference = source.getPreference().toString();
+        orderHistory = new HashMap<>(source.getOrderHistory()); // Copying order history from Person
     }
 
     /**
@@ -83,11 +84,11 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Tag.class.getSimpleName()));
         }
 
-        if (tag != "" && !Tag.isValidTagName(tag)) {
+        if (!tag.isEmpty() && !Tag.isValidTagName(tag)) {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
 
-        final Optional<Tag> modelTag = Optional.ofNullable(tag != "" ? new Tag(tag) : null);
+        final Optional<Tag> modelTag = tag.isEmpty() ? Optional.empty() : Optional.of(new Tag(tag));
 
         if (preference == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Preference"));
@@ -100,7 +101,25 @@ class JsonAdaptedPerson {
         }
         final Preference modelPreference = new Preference(list);
 
-        return new Person(modelName, modelPhone, modelTag, modelPreference);
+        Person person = new Person(modelName, modelPhone, modelTag, modelPreference);
+
+        // Restore the order history into the person object
+        for (Map.Entry<String, Integer> entry : orderHistory.entrySet()) {
+            for (int i = 0; i < entry.getValue(); i++) {
+                person.addOrder(entry.getKey()); // Re-add the orders based on frequency
+            }
+        }
+
+        return person;
     }
 
+    /**
+     * Returns the order history of the customer.
+     *
+     * @return A map of dish names to order frequencies.
+     */
+    @JsonProperty("orderHistory")
+    public Map<String, Integer> getOrderHistory() {
+        return orderHistory;
+    }
 }

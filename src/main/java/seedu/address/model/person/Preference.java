@@ -63,6 +63,10 @@ public class Preference {
         return preferences.equals(otherPreference.preferences);
     }
 
+    public List<String> getValues() {
+        return preferences;
+    }
+
     @Override
     public int hashCode() {
         return preferences.hashCode();

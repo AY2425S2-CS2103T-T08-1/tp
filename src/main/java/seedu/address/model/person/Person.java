@@ -2,8 +2,12 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
@@ -19,6 +23,7 @@ public class Person {
     private final Phone phone;
     private final Optional<Tag> tag;
     private final Preference preference;
+    private final HashMap<String, Integer> orderHistory; // Stores dish names and their frequencies
 
     /**
      * Every field must be present and not null.
@@ -29,6 +34,18 @@ public class Person {
         this.phone = phone;
         this.tag = tag;
         this.preference = preference;
+        this.orderHistory = new HashMap<>();
+    }
+
+    /**
+     * Copy constructor to create a new Person with the same details but updated order history.
+     */
+    public Person(Person other) {
+        this.name = other.name;
+        this.phone = other.phone;
+        this.tag = other.tag;
+        this.preference = other.preference;
+        this.orderHistory = new HashMap<>(other.orderHistory); // Copy the existing order history
     }
 
     public Name getName() {
@@ -46,11 +63,6 @@ public class Person {
     public Preference getPreference() {
         return preference;
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 
     public void addPreference(String preference) {
         this.preference.addPreference(preference);
@@ -88,7 +100,6 @@ public class Person {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
->>>>>>> Stashed changes
 
     /**
      * Returns true if both persons have the same name.
@@ -103,7 +114,8 @@ public class Person {
                 && otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getTag().equals(getTag())
-                && otherPerson.getPreference().equals(getPreference());
+                && otherPerson.getPreference().equals(getPreference())
+                && orderHistory.equals(otherPerson.orderHistory);
     }
 
     /**

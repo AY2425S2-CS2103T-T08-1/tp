@@ -9,16 +9,20 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddOrderCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindPreferencesCommand;
+import seedu.address.logic.commands.FindOrdersCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SavePreferenceCommand;
 import seedu.address.logic.commands.TagCommand;
+import seedu.address.logic.commands.ViewOrdersCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -85,6 +89,18 @@ public class AddressBookParser {
         case SavePreferenceCommand.COMMAND_WORD:
             return new SavePreferenceCommandParser().parse(arguments);
 
+        case FindPreferencesCommand.COMMAND_WORD:
+            return new FindPreferencesCommandParser().parse(arguments);
+
+        case AddOrderCommand.COMMAND_WORD:
+            return new AddOrderCommandParser().parse(arguments);
+              
+        case FindOrdersCommand.COMMAND_WORD:
+            return new FindOrdersCommandParser().parse(arguments);
+            
+        case ViewOrdersCommand.COMMAND_WORD:
+            return new ViewOrdersCommandParser().parse(arguments);
+            
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
