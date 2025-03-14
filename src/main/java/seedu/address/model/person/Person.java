@@ -46,6 +46,46 @@ public class Person {
     public Preference getPreference() {
         return preference;
     }
+<<<<<<< Updated upstream
+=======
+
+    public void addPreference(String preference) {
+        this.preference.addPreference(preference);
+    }
+
+    /**
+     * Adds an order to the customer's order history.
+     * If the dish has been ordered before, its count is incremented.
+     * Otherwise, it is added to the history with a count of 1.
+     *
+     * @param dish The name of the dish ordered.
+     */
+    public void addOrder(String dish) {
+        String normalizedDish = dish.trim().toLowerCase().replaceAll("\\s+", ""); // Normalize dish name
+        orderHistory.put(normalizedDish, orderHistory.getOrDefault(normalizedDish, 0) + 1);
+    }
+    /**
+     * Returns the order history of the customer as a mapping of dish names to their frequency.
+     *
+     * @return A {@code Map<String, Integer>} representing the customer's order history.
+     */
+    public Map<String, Integer> getOrderHistory() {
+        return orderHistory;
+    }
+
+    /**
+     * Retrieves the top three most frequently ordered dishes by the customer.
+     *
+     * @return A {@code List<String>} containing up to three dish names sorted by order frequency in descending order.
+     */
+    public List<String> getTopDishes() {
+        return orderHistory.entrySet().stream()
+                .sorted((a, b) -> b.getValue().compareTo(a.getValue())) // Sort by frequency (descending)
+                .limit(3) // Get top 3 dishes
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+>>>>>>> Stashed changes
 
     /**
      * Returns true if both persons have the same name.

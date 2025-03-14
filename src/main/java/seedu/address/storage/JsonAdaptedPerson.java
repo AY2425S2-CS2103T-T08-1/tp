@@ -1,8 +1,13 @@
 package seedu.address.storage;
 
+<<<<<<< Updated upstream
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+=======
+import java.util.*;
+import java.util.stream.Collectors;
+>>>>>>> Stashed changes
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -85,7 +90,11 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Preference"));
         }
 
-        List<String> list = Arrays.asList(preference.substring(1, preference.length() - 1).split(", "));
+        List<String> list = new ArrayList<>();
+        String trimmedPref = preference.substring(1, preference.length() - 1);
+        if (!trimmedPref.isBlank()) {
+            list.addAll(Arrays.asList(trimmedPref.split(", ")));
+        }
         final Preference modelPreference = new Preference(list);
 
         return new Person(modelName, modelPhone, modelTag, modelPreference);
