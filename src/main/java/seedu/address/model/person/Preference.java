@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class Preference {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final List<String> preferences;
+    public List<String> preferences;
 
     /**
      * Constructs a {@code Preference}.
@@ -28,7 +29,7 @@ public class Preference {
     }
 
     public Preference() {
-        this.preferences = List.of();
+        this.preferences = new ArrayList<>();
     }
 
     /**
@@ -38,10 +39,8 @@ public class Preference {
         return test.matches(VALIDATION_REGEX);
     }
 
-    public Preference addPreference(String preference) {
-        List<String> newPreferences = preferences;
-        newPreferences.add(preference);
-        return new Preference(newPreferences);
+    public void addPreference(String preference) {
+        preferences.add(preference);
     }
 
     @Override

@@ -63,6 +63,11 @@ public class Person {
     public Preference getPreference() {
         return preference;
     }
+
+    public void addPreference(String preference) {
+        this.preference.addPreference(preference);
+    }
+
     /**
      * Adds an order to the customer's order history.
      * If the dish has been ordered before, its count is incremented.

@@ -51,7 +51,7 @@ public class SavePreferenceCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        personToEdit.getPreference().addPreference(preference);
+        personToEdit.addPreference(preference);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, preference, Messages.format(personToEdit)));
     }

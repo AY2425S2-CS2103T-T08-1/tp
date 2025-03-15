@@ -22,15 +22,13 @@ public class SavePreferenceCommandParser implements Parser<SavePreferenceCommand
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_PREFERENCE);
 
-        Index index;
-
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SavePreferenceCommand.MESSAGE_USAGE), ive);
+        if (argMultimap.getPreamble().isBlank() || argMultimap.getValue(PREFIX_PREFERENCE).isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SavePreferenceCommand.MESSAGE_USAGE));
         }
 
+        Index index = ParserUtil.parseIndex(argMultimap.getPreamble());
         String preference = argMultimap.getValue(PREFIX_PREFERENCE).orElse("");
+        preference = preference.trim().toLowerCase();
 
         return new SavePreferenceCommand(index,preference);
     }

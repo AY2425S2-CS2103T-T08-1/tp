@@ -17,7 +17,7 @@ public class FindPreferencesCommand extends Command {
             + ": Finds all persons with the specified preference (case-sensitive) "
             + "and displays them as a list with index numbers.\n"
             + "Parameters: PREFERENCE\n"
-            + "Example: " + COMMAND_WORD + " toilet";
+            + "Example: " + COMMAND_WORD + " Vegetarian";
 
     private final Predicate<Person> predicate;
 
