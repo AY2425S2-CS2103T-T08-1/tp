@@ -18,8 +18,8 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[] {
-            new Person(new Name("Alex Yeoh"), new Phone("87438807"), Optional.of(new Tag("VIP"))
-            , new Preference(new ArrayList(Arrays.asList("No spicy food")))),
+            new Person(new Name("Alex Yeoh"), new Phone("87438807"), Optional.of(new Tag("VIP")),
+                    new Preference(new ArrayList(Arrays.asList("No spicy food")))),
             new Person(new Name("Bernice Yu"), new Phone("99272758"),
                 Optional.of(new Tag("New")), new Preference()),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"),
