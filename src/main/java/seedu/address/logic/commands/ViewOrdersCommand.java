@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+
 import java.util.List;
 import java.util.Set;
 
@@ -27,6 +28,10 @@ public class ViewOrdersCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Set the index to the customer we are interested in
+     * @param targetIndex
+     */
     public ViewOrdersCommand(Index targetIndex) {
         requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
@@ -49,7 +54,7 @@ public class ViewOrdersCommand extends Command {
             return new CommandResult(message + "No past orders.");
         }
 
-        String messageWithOrders = message + String.join(",",personToView.getOrderHistory().keySet());
+        String messageWithOrders = message + String.join(",", personToView.getOrderHistory().keySet());
 
         return new CommandResult(messageWithOrders);
     }

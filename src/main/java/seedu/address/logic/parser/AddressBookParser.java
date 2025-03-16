@@ -16,8 +16,8 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.FindPreferencesCommand;
 import seedu.address.logic.commands.FindOrdersCommand;
+import seedu.address.logic.commands.FindPreferencesCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SavePreferenceCommand;
@@ -73,34 +73,24 @@ public class AddressBookParser {
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
-
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
-
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
-
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
-
         case TagCommand.COMMAND_WORD:
             return new TagCommandParser().parse(arguments);
-
         case SavePreferenceCommand.COMMAND_WORD:
             return new SavePreferenceCommandParser().parse(arguments);
-
         case FindPreferencesCommand.COMMAND_WORD:
             return new FindPreferencesCommandParser().parse(arguments);
-
         case AddOrderCommand.COMMAND_WORD:
             return new AddOrderCommandParser().parse(arguments);
-              
         case FindOrdersCommand.COMMAND_WORD:
             return new FindOrdersCommandParser().parse(arguments);
-            
         case ViewOrdersCommand.COMMAND_WORD:
             return new ViewOrdersCommandParser().parse(arguments);
-            
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

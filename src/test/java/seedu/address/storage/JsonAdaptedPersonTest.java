@@ -5,13 +5,13 @@ import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORM
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-
-import java.util.Map;
 
 public class JsonAdaptedPersonTest {
     private static final String INVALID_NAME = "R@chel";
@@ -22,7 +22,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_PHONE = BENSON.getPhone().toString();
     private static final String VALID_TAG = BENSON.getTag().map(tag -> tag.toString()).orElse("");
     private static final String VALID_PREFERENCE = BENSON.getPreference().toString();
-    private static final Map<String,Integer> VALID_ORDER_HISTORY = BENSON.getOrderHistory();
+    private static final Map<String, Integer> VALID_ORDER_HISTORY = BENSON.getOrderHistory();
 
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
@@ -40,7 +40,8 @@ public class JsonAdaptedPersonTest {
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(null, VALID_PHONE, VALID_TAG, VALID_PREFERENCE, VALID_ORDER_HISTORY);
+        JsonAdaptedPerson person = new JsonAdaptedPerson(null, VALID_PHONE, VALID_TAG,
+                VALID_PREFERENCE, VALID_ORDER_HISTORY);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -55,7 +56,8 @@ public class JsonAdaptedPersonTest {
 
     @Test
     public void toModelType_nullPhone_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, null, VALID_TAG, VALID_PREFERENCE, VALID_ORDER_HISTORY);
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, null, VALID_TAG,
+                VALID_PREFERENCE, VALID_ORDER_HISTORY);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }

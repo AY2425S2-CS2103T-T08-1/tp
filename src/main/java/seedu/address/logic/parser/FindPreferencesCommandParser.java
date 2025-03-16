@@ -1,11 +1,11 @@
 package seedu.address.logic.parser;
 
+import java.util.function.Predicate;
+
 import seedu.address.logic.commands.FindPreferencesCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PreferenceContainsKeywordPredicate;
-
-import java.util.function.Predicate;
 
 /**
  * Parses input arguments and creates a new FindPreferencesCommand object

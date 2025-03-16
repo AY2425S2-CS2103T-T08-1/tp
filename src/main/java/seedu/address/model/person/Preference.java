@@ -17,7 +17,7 @@ public class Preference {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public List<String> preferences;
+    private List<String> preferences;
 
     /**
      * Constructs a {@code Preference}.

@@ -1,16 +1,19 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.List;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
+/**
+ * A command to save preference
+ */
 public class SavePreferenceCommand extends Command {
 
     public static final String COMMAND_WORD = "savePreference";
@@ -27,7 +30,7 @@ public class SavePreferenceCommand extends Command {
     public static final String MESSAGE_INVALID_INDEX = "The index is outside the acceptable range!";
 
     private final Index index;
-    private final String  preference;
+    private final String preference;
 
     /**
      * @param index of the person in the address book to add preference
