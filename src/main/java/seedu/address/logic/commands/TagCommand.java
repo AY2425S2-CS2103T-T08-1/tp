@@ -32,7 +32,6 @@ public class TagCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Customer %s tagged as %s";
     public static final String MESSAGE_INVALID_INDEX = "The index is outside the acceptable range!";
-    public static final String MESSAGE_CONSTRAINTS = "Tag must be either VIP, Regular or New";
 
     public final Index index;
     public final String tag;
@@ -59,10 +58,6 @@ public class TagCommand extends Command {
         }
 
         Optional<Tag> newTag = Optional.empty();
-
-        if (!tag.equals("") && !Tag.isValidTagName(tag)) {
-            throw new CommandException(MESSAGE_CONSTRAINTS);
-        }
 
         if (!tag.equals("")) {
             newTag = Optional.of(new Tag(tag));

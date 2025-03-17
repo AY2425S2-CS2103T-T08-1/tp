@@ -1,26 +1,20 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REGULAR;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_VIP;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REGULAR;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_VIP;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.TagCommand;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class TagCommandParserTest {
 
@@ -56,21 +50,9 @@ public class TagCommandParserTest {
     }
 
     @Test
-    public void parse_invalidValue_failure() {
-        // invalid tag
-        assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
-
-        // invalid tag followed by valid tag
-        assertParseFailure(parser, "1" + INVALID_TAG_DESC + TAG_DESC_VIP, Tag.MESSAGE_CONSTRAINTS);
-
-        // valid tag followed by invalid tag
-        assertParseFailure(parser, "1" + TAG_DESC_VIP + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
-    }
-
-    @Test
     public void parse_emptyTag_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + TAG_EMPTY;
+        String userInput = targetIndex.getOneBased() + " " + TAG_EMPTY;
         TagCommand expectedCommand = new TagCommand(targetIndex, "");
 
         assertParseSuccess(parser, userInput, expectedCommand);

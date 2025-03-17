@@ -156,9 +156,11 @@ Format: `tag INDEX t/TAG`
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * Existing tags of the person will be removed and replaced by the input tag.
+* If multiple tags are provided, only the last tag will be saved.
 
 Examples:
 * `list` followed by `tag 2 t/VIP` tags the 2nd person in the address book as VIP.
+* `tag 1 t/Regular t/VIP` tags the 1st person in the address book as VIP.
 * `tag 1 t/` will untag a customer.
 
 ### Store a customer's dietary preferences : `savePreference`
