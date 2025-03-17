@@ -22,19 +22,14 @@ public class TagCommandParser implements Parser<TagCommand> {
     @Override
     public TagCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-                PREFIX_TAG);
-
-        Index index;
         try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TAG);
+            Index index = ParserUtil.parseIndex(argMultimap.getPreamble());
+            String tag = argMultimap.getValue(PREFIX_TAG).orElse("");
+            return new TagCommand(index, tag);
         } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    TagCommand.MESSAGE_USAGE), ive);
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagCommand.MESSAGE_USAGE), ive);
         }
-
-        String tag = argMultimap.getValue(PREFIX_TAG).orElse("");
-
-        return new TagCommand(index, tag);
     }
 }

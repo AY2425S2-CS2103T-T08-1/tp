@@ -27,7 +27,7 @@ public class PhoneTest {
         // invalid phone numbers
         assertFalse(Phone.isValidPhone("")); // empty string
         assertFalse(Phone.isValidPhone(" ")); // spaces only
-        assertFalse(Phone.isValidPhone("91")); // less than 3 numbers
+        assertFalse(Phone.isValidPhone("91")); // less than 8 numbers
         assertFalse(Phone.isValidPhone("phone")); // non-numeric
         assertFalse(Phone.isValidPhone("9011p041")); // alphabets within digits
         assertFalse(Phone.isValidPhone("9312 1534")); // spaces within digits
@@ -39,10 +39,10 @@ public class PhoneTest {
 
     @Test
     public void equals() {
-        Phone phone = new Phone("999");
+        Phone phone = new Phone("99999999");
 
         // same values -> returns true
-        assertTrue(phone.equals(new Phone("999")));
+        assertTrue(phone.equals(new Phone("99999999")));
 
         // same object -> returns true
         assertTrue(phone.equals(phone));
@@ -54,6 +54,6 @@ public class PhoneTest {
         assertFalse(phone.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(phone.equals(new Phone("995")));
+        assertFalse(phone.equals(new Phone("99999995")));
     }
 }
