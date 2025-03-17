@@ -73,11 +73,11 @@ public class ParserUtil {
     public static Optional<Tag> parseTag(String tag) throws ParseException {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
+        if (trimmedTag.isBlank()) {
+            return Optional.empty();
+        }
         if (!Tag.isValidTagName(trimmedTag)) {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
-        }
-        if (trimmedTag.isEmpty()) {
-            return Optional.empty();
         }
         return Optional.of(new Tag(trimmedTag));
     }

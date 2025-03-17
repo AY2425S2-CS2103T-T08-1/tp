@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -33,8 +34,8 @@ public class TagCommand extends Command {
     public static final String MESSAGE_INVALID_INDEX = "The index is outside the acceptable range!";
     public static final String MESSAGE_CONSTRAINTS = "Tag must be either VIP, Regular or New";
 
-    private final Index index;
-    private final String tag;
+    public final Index index;
+    public final String tag;
 
     /**
      * @param index of the person in the filtered person list to tag
@@ -91,5 +92,10 @@ public class TagCommand extends Command {
         TagCommand e = (TagCommand) other;
         return index.equals(e.index)
                 && tag.equals(e.tag);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).add("index", index).add("tag", tag).toString();
     }
 }

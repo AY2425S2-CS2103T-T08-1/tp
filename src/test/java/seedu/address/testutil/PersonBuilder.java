@@ -54,7 +54,11 @@ public class PersonBuilder {
      * Parses the {@code tag} into a {@code Optional<Tag>} and set it to the {@code Person} that we are building.
      */
     public PersonBuilder withTag(String tag) {
-        this.tag = tag == "" ? Optional.empty() : Optional.of(new Tag(tag));
+        if (tag.isBlank()) {
+            this.tag = Optional.empty();
+        } else if (Tag.isValidTagName(tag)) {
+            this.tag = Optional.of(new Tag(tag));
+        }
         return this;
     }
 
