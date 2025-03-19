@@ -115,7 +115,7 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getTag().equals(getTag())
                 && otherPerson.getPreference().equals(getPreference())
-                && orderHistory.equals(otherPerson.orderHistory);
+                && otherPerson.getOrderHistory().equals(getOrderHistory());
     }
 
     /**
@@ -153,6 +153,7 @@ public class Person {
                 .add("phone", phone)
                 .add("tag", tag)
                 .add("preference", preference)
+                .add("orderHistory", orderHistory)
                 .toString();
     }
 

@@ -211,6 +211,7 @@ public class EditCommand extends Command {
                     .add("name", name)
                     .add("phone", phone)
                     .add("tag", tag)
+                    .add("preference", preference)
                     .toString();
         }
     }

@@ -29,8 +29,8 @@ public class SavePreferenceCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Added %s to %s";
     public static final String MESSAGE_INVALID_INDEX = "The index is outside the acceptable range!";
 
-    private final Index index;
-    private final String preference;
+    public final Index index;
+    public final String preference;
 
     /**
      * @param index of the person in the address book to add preference
@@ -73,5 +73,12 @@ public class SavePreferenceCommand extends Command {
         SavePreferenceCommand e = (SavePreferenceCommand) other;
         return index.equals(e.index)
                 && preference.equals(e.preference);
+    }
+
+    @Override
+    public String toString() {
+        return SavePreferenceCommand.class.getCanonicalName() + "{index="
+                + index + ", preference="
+                + preference + "}";
     }
 }
