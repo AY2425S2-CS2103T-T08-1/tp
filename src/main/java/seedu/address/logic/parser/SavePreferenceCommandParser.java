@@ -29,6 +29,7 @@ public class SavePreferenceCommandParser implements Parser<SavePreferenceCommand
 
         Index index = ParserUtil.parseIndex(argMultimap.getPreamble());
         String preference = argMultimap.getValue(PREFIX_PREFERENCE).orElse("");
+
         preference = preference.trim().toLowerCase();
 
         return new SavePreferenceCommand(index, preference);

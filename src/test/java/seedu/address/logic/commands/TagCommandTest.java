@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 
+
+/**
+ * Contains unit tests for TagCommand.
+ */
 public class TagCommandTest {
     @Test
     public void constructor_nullIndex_throwsNullPointerException() {

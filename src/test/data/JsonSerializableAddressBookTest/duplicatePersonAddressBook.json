@@ -2,10 +2,14 @@
   "persons": [ {
     "name": "Alice Pauline",
     "phone": "94351253",
-    "tag": "VIP"
+    "tag": "VIP",
+    "preference" : "[No spicy food, no beef]",
+    "orderHistory" : { }
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
-    "tag": ""
+    "tag" : "VIP",
+    "preference" : "[No spicy food, no beef]",
+    "orderHistory" : { }
   } ]
 }

@@ -39,7 +39,8 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
-        descriptor.getTag().ifPresent(tag -> sb.append(PREFIX_TAG).append(tag.toString()).append(" "));
+        descriptor.getTag().ifPresent(tag -> sb.append(PREFIX_TAG).append(
+                    tag.map(Tag::toString).orElse("")).append(" "));
         return sb.toString();
     }
 }
