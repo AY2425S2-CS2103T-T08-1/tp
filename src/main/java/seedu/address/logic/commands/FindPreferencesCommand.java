@@ -17,7 +17,9 @@ public class FindPreferencesCommand extends Command {
             + ": Finds all persons with the specified preference (case-sensitive) "
             + "and displays them as a list with index numbers.\n"
             + "Parameters: PREFERENCE\n"
-            + "Example: " + COMMAND_WORD + " Vegetarian";
+            + "Example: " + COMMAND_WORD + " no seafood";
+
+    public static final String MESSAGE_SUCCESS = "%d persons listed!";
 
     private final Predicate<Person> predicate;
 
@@ -30,7 +32,7 @@ public class FindPreferencesCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
-                String.format("%d persons listed!", model.getFilteredPersonList().size()));
+                String.format(MESSAGE_SUCCESS, model.getFilteredPersonList().size()));
     }
 
     @Override
