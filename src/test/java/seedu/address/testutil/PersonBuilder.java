@@ -1,6 +1,8 @@
 package seedu.address.testutil;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import seedu.address.model.person.Name;
@@ -21,6 +23,7 @@ public class PersonBuilder {
     private Phone phone;
     private Optional<Tag> tag;
     private Preference preference;
+    private Map<String, Integer> orderHistory;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -30,6 +33,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         tag = Optional.empty();
         preference = new Preference();
+        orderHistory = new HashMap<String, Integer>();
     }
 
     /**
@@ -40,6 +44,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         tag = personToCopy.getTag();
         preference = personToCopy.getPreference();
+        orderHistory = personToCopy.getOrderHistory();
     }
 
     /**
@@ -75,6 +80,20 @@ public class PersonBuilder {
      */
     public PersonBuilder withPreference(String... preference) {
         this.preference = new Preference(Arrays.asList(preference));
+        return this;
+    }
+
+    /**
+     * Adds the specified {@code orders} to the {@code orderHistory} of the {@code Person} being built.
+     * If an order already exists in the history, its count is incremented; otherwise, it is added with a count of 1.
+     *
+     * @param orders One or more order names to be recorded in the order history.
+     * @return This {@code PersonBuilder} instance with the updated order history.
+     */
+    public PersonBuilder withOrderHistory(String... orders) {
+        for (String order: orders) {
+            orderHistory.put(order, orderHistory.getOrDefault(order, 0) + 1);
+        }
         return this;
     }
 

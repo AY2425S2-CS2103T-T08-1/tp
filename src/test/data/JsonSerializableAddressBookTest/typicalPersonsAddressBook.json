@@ -17,7 +17,10 @@
     "phone" : "95352563",
     "tag" : "",
     "preference" : "[]",
-    "orderHistory" : { }
+    "orderHistory" : {
+      "soup" : 1,
+      "chickenrice" : 1
+    }
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
@@ -29,13 +32,17 @@
     "phone" : "94823224",
     "tag" : "",
     "preference" : "[No spicy food, no beef]",
-    "orderHistory" : { }
+    "orderHistory" : {
+      "pizza" :  1
+    }
   }, {
     "name" : "Fiona Kunz",
     "phone" : "94827427",
     "tag" : "",
     "preference" : "[]",
-    "orderHistory" : { }
+    "orderHistory" : {
+      "milo" : 1
+    }
   }, {
     "name" : "George Best",
     "phone" : "94828442",

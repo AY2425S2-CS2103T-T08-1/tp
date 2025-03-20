@@ -24,13 +24,13 @@ public class TypicalPersons {
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withTag("REGULAR").withPreference("no seafood", "no fish").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .build();
+            .withOrderHistory("soup", "chickenrice").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withTag("VIP").withPreference("No spicy food").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("94823224")
-            .withPreference("No spicy food", "no beef").build();
+            .withPreference("No spicy food", "no beef").withOrderHistory("pizza").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("94827427")
-            .build();
+            .withOrderHistory("milo").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("94828442")
             .withPreference("No spicy food", "no beef").build();
 
