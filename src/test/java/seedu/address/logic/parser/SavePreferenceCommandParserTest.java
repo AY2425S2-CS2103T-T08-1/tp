@@ -1,9 +1,5 @@
 package seedu.address.logic.parser;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.SavePreferenceCommand;
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFERENCE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.PREFERENCE_DESC;
@@ -12,15 +8,20 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.SavePreferenceCommand;
+
 public class SavePreferenceCommandParserTest {
 
-    private SavePreferenceCommandParser parser = new SavePreferenceCommandParser();
+    private static final String MESSAGE_INVALID_INDEX =
+            "Index is not a non-zero unsigned integer.";
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, SavePreferenceCommand.MESSAGE_USAGE);
 
-    private static final String MESSAGE_INVALID_INDEX =
-            "Index is not a non-zero unsigned integer.";
+    private SavePreferenceCommandParser parser = new SavePreferenceCommandParser();
 
     @Test
     public void parse_missingParts_failure() {

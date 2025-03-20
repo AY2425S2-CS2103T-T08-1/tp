@@ -9,11 +9,12 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REGULAR;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.PersonBuilder;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.PersonBuilder;
 
 public class PersonTest {
 
@@ -78,7 +79,7 @@ public class PersonTest {
     @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", tag=" + ALICE.getTag() +", preference=" + ALICE.getPreference()
+                + ", tag=" + ALICE.getTag() + ", preference=" + ALICE.getPreference()
                 + ", orderHistory=" + ALICE.getOrderHistory() + "}";
         assertEquals(expected, ALICE.toString());
     }
@@ -87,7 +88,8 @@ public class PersonTest {
 
     @Test
     public void addOrder_storesOrderCorrectly() {
-        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+        Person person = new Person(new Name("Alice"), new Phone("12345678"),
+                Optional.empty(), new Preference(List.of()));
 
         person.addOrder("Chicken Rice");
         person.addOrder("Chicken Rice");
@@ -99,7 +101,8 @@ public class PersonTest {
 
     @Test
     public void addOrder_normalizesCase() {
-        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+        Person person = new Person(new Name("Alice"), new Phone("12345678"),
+                Optional.empty(), new Preference(List.of()));
 
         person.addOrder("McFlurry");
         person.addOrder("mcflurry");
@@ -110,7 +113,8 @@ public class PersonTest {
 
     @Test
     public void addOrder_normalizesSpacing() {
-        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+        Person person = new Person(new Name("Alice"), new Phone("12345678"),
+                Optional.empty(), new Preference(List.of()));
 
         person.addOrder("Mc Flurry");
         person.addOrder("mc   flurry");
@@ -121,7 +125,8 @@ public class PersonTest {
 
     @Test
     public void getTopDishes_returnsTopThreeSorted() {
-        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+        Person person = new Person(new Name("Alice"), new Phone("12345678"),
+                Optional.empty(), new Preference(List.of()));
 
         person.addOrder("Chicken Rice");
         person.addOrder("Chicken Rice");
