@@ -10,8 +10,10 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
 import org.junit.jupiter.api.Test;
-
 import seedu.address.testutil.PersonBuilder;
+
+import java.util.List;
+import java.util.Optional;
 
 public class PersonTest {
 
@@ -79,5 +81,57 @@ public class PersonTest {
                 + ", tag=" + ALICE.getTag() +", preference=" + ALICE.getPreference()
                 + ", orderHistory=" + ALICE.getOrderHistory() + "}";
         assertEquals(expected, ALICE.toString());
+    }
+
+    /*** NEW TESTS FOR ORDER TRACKING ***/
+
+    @Test
+    public void addOrder_storesOrderCorrectly() {
+        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+
+        person.addOrder("Chicken Rice");
+        person.addOrder("Chicken Rice");
+        person.addOrder("Nasi Lemak");
+
+        assertEquals(2, person.getOrderHistory().get("chicken rice")); // Order count should be 2
+        assertEquals(1, person.getOrderHistory().get("nasi lemak")); // Order count should be 1
+    }
+
+    @Test
+    public void addOrder_normalizesCase() {
+        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+
+        person.addOrder("McFlurry");
+        person.addOrder("mcflurry");
+        person.addOrder("MCFLURRY");
+
+        assertEquals(3, person.getOrderHistory().get("mcflurry")); // Should be case-insensitive
+    }
+
+    @Test
+    public void addOrder_normalizesSpacing() {
+        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+
+        person.addOrder("Mc Flurry");
+        person.addOrder("mc   flurry");
+        person.addOrder(" mc flurry ");
+
+        assertEquals(3, person.getOrderHistory().get("mc flurry")); // Should normalize to "mcflurry"
+    }
+
+    @Test
+    public void getTopDishes_returnsTopThreeSorted() {
+        Person person = new Person(new Name("Alice"), new Phone("12345678"), Optional.empty(), new Preference(List.of()));
+
+        person.addOrder("Chicken Rice");
+        person.addOrder("Chicken Rice");
+        person.addOrder("Nasi Lemak");
+        person.addOrder("McFlurry");
+        person.addOrder("McFlurry");
+        person.addOrder("McFlurry");
+
+        List<String> topDishes = person.getTopDishes();
+
+        assertEquals(List.of("mcflurry", "chicken rice", "nasi lemak"), topDishes); // Sorted by highest frequency
     }
 }

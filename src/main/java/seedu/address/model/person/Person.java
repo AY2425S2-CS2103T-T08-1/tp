@@ -76,7 +76,7 @@ public class Person {
      * @param dish The name of the dish ordered.
      */
     public void addOrder(String dish) {
-        String normalizedDish = dish.trim().toLowerCase().replaceAll("\\s+", ""); // Normalize dish name
+        String normalizedDish = dish.trim().toLowerCase().replaceAll("\\s+", " "); // Normalize dish name
         orderHistory.put(normalizedDish, orderHistory.getOrDefault(normalizedDish, 0) + 1);
     }
     /**
