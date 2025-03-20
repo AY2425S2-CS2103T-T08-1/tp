@@ -26,5 +26,4 @@ public class ViewOrdersCommandParserTest {
     public void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewOrdersCommand.MESSAGE_USAGE));
     }
-
 }
