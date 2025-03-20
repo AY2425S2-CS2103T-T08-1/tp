@@ -28,7 +28,7 @@ public class ViewOrdersCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_noOrders_success() {
+    public void execute_validIndexUnfilteredList_noOrders() {
         Person personToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         ViewOrdersCommand viewOrdersCommand = new ViewOrdersCommand(INDEX_FIRST_PERSON);
 
@@ -49,7 +49,7 @@ public class ViewOrdersCommandTest {
     }
 
     @Test
-    public void execute_validIndexFilteredList_noOrders_success() {
+    public void execute_validIndexFilteredList_noOrders() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person personToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());

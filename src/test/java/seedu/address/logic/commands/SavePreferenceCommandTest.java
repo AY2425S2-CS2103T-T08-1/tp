@@ -45,7 +45,8 @@ public class SavePreferenceCommandTest {
 
     @Test
     public void toStringMethod() {
-        SavePreferenceCommand savePreferenceCommand = new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
+        SavePreferenceCommand savePreferenceCommand =
+                new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
         String expected = SavePreferenceCommand.class.getCanonicalName() + "{index="
                 + savePreferenceCommand.index + ", preference="
                 + savePreferenceCommand.preference + "}";
@@ -56,9 +57,11 @@ public class SavePreferenceCommandTest {
     public void execute_validIndexUnfilteredList_success() {
         Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(personToEdit).withPreference("no seafood").build();
-        SavePreferenceCommand savePreferenceCommand = new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
+        SavePreferenceCommand savePreferenceCommand =
+                new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
 
-        String expectedMessage = String.format(SavePreferenceCommand.MESSAGE_SUCCESS, "no seafood", Messages.format(personToEdit));
+        String expectedMessage =
+                String.format(SavePreferenceCommand.MESSAGE_SUCCESS, "no seafood", Messages.format(personToEdit));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(personToEdit, editedPerson);
@@ -69,17 +72,22 @@ public class SavePreferenceCommandTest {
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        SavePreferenceCommand savePreferenceCommand = new SavePreferenceCommand(outOfBoundIndex, "no seafood");
+        SavePreferenceCommand savePreferenceCommand =
+                new SavePreferenceCommand(outOfBoundIndex, "no seafood");
 
         assertCommandFailure(savePreferenceCommand, model, SavePreferenceCommand.MESSAGE_INVALID_INDEX);
     }
 
     @Test
     public void equals() {
-        final SavePreferenceCommand standardCommand = new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
-        final SavePreferenceCommand commandWithSameValues = new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
-        final SavePreferenceCommand commandWithDifferentIndex = new SavePreferenceCommand(INDEX_SECOND_PERSON, "no seafood");
-        final SavePreferenceCommand commandWithDifferentPreference = new SavePreferenceCommand(INDEX_FIRST_PERSON, "no meat");
+        final SavePreferenceCommand standardCommand =
+                new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
+        final SavePreferenceCommand commandWithSameValues =
+                new SavePreferenceCommand(INDEX_FIRST_PERSON, "no seafood");
+        final SavePreferenceCommand commandWithDifferentIndex =
+                new SavePreferenceCommand(INDEX_SECOND_PERSON, "no seafood");
+        final SavePreferenceCommand commandWithDifferentPreference =
+                new SavePreferenceCommand(INDEX_FIRST_PERSON, "no meat");
 
         // same values -> returns true
         assertTrue(standardCommand.equals(commandWithSameValues));

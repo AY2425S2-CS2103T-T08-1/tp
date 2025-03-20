@@ -31,8 +31,8 @@ public class PreferenceContainsKeywordPredicate implements Predicate<Person> {
             return false;
         }
 
-        PreferenceContainsKeywordPredicate otherPreferenceContainsKeywordsPredicate
-                = (PreferenceContainsKeywordPredicate) other;
+        PreferenceContainsKeywordPredicate otherPreferenceContainsKeywordsPredicate =
+                (PreferenceContainsKeywordPredicate) other;
         return keyword.equals(otherPreferenceContainsKeywordsPredicate.keyword);
     }
 
