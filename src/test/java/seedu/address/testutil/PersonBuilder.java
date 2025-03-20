@@ -33,7 +33,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         tag = Optional.empty();
         preference = new Preference();
-        orderHistory = new HashMap<String,Integer>();
+        orderHistory = new HashMap<String, Integer>();
     }
 
     /**
