@@ -276,7 +276,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 * Restaurant owners who want to keep track of their clientele and regular customers
 
-**Value proposition**: 
+**Value proposition**:
 * Improve the quality of service for customers by enabling regulars to contact easily their favourite restaurant
 * Increase interpersonal relationships with customers by keeping track of their preferences
 

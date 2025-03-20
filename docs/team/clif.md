@@ -3,5 +3,5 @@
   title: "Clif's Project Portfolio Page"
 ---
 
-### Project: 
+### Project:
 
