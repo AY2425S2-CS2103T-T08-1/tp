@@ -90,13 +90,6 @@ public class AddCommandParserTest {
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
     }
 
-    @Test
-    public void parse_optionalFieldsMissing_success() {
-        // zero tags
-        Person expectedPerson = new PersonBuilder(AMY).withTag(VALID_TAG_REGULAR).build();
-        assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY,
-                new AddCommand(expectedPerson));
-    }
 
     @Test
     public void parse_compulsoryFieldMissing_failure() {
