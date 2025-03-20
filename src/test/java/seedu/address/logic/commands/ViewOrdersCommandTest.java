@@ -28,12 +28,12 @@ public class ViewOrdersCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
+    public void execute_validIndexUnfilteredList_noOrders_success() {
         Person personToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         ViewOrdersCommand viewOrdersCommand = new ViewOrdersCommand(INDEX_FIRST_PERSON);
 
         String expectedMessage = String.format(ViewOrdersCommand.MESSAGE_VIEWORDERS_SUCCESS,
-                Messages.format(personToView));
+                Messages.format(personToView)) + "No past orders.";
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
@@ -49,17 +49,17 @@ public class ViewOrdersCommandTest {
     }
 
     @Test
-    public void execute_validIndexFilteredList_success() {
+    public void execute_validIndexFilteredList_noOrders_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person personToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         ViewOrdersCommand viewOrdersCommand = new ViewOrdersCommand(INDEX_FIRST_PERSON);
 
         String expectedMessage = String.format(ViewOrdersCommand.MESSAGE_VIEWORDERS_SUCCESS,
-                Messages.format(personToView));
+                Messages.format(personToView)) + "No past orders.";
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        showNoPerson(expectedModel);
+        showPersonAtIndex(expectedModel, INDEX_FIRST_PERSON);
 
         assertCommandSuccess(viewOrdersCommand, model, expectedMessage, expectedModel);
     }
@@ -79,24 +79,24 @@ public class ViewOrdersCommandTest {
 
     @Test
     public void equals() {
-        ViewOrdersCommand deleteFirstCommand = new ViewOrdersCommand(INDEX_FIRST_PERSON);
-        ViewOrdersCommand deleteSecondCommand = new ViewOrdersCommand(INDEX_SECOND_PERSON);
+        ViewOrdersCommand viewOrdersFirstCommand = new ViewOrdersCommand(INDEX_FIRST_PERSON);
+        ViewOrdersCommand viewOrdersSecondCommand = new ViewOrdersCommand(INDEX_SECOND_PERSON);
 
         // same object -> returns true
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+        assertTrue(viewOrdersFirstCommand.equals(viewOrdersFirstCommand));
 
         // same values -> returns true
-        ViewOrdersCommand deleteFirstCommandCopy = new ViewOrdersCommand(INDEX_FIRST_PERSON);
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+        ViewOrdersCommand viewOrdersFirstCommandCopy = new ViewOrdersCommand(INDEX_FIRST_PERSON);
+        assertTrue(viewOrdersFirstCommand.equals(viewOrdersFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(deleteFirstCommand.equals(1));
+        assertFalse(viewOrdersFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(deleteFirstCommand.equals(null));
+        assertFalse(viewOrdersFirstCommand.equals(null));
 
         // different person -> returns false
-        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        assertFalse(viewOrdersFirstCommand.equals(viewOrdersSecondCommand));
     }
 
     @Test

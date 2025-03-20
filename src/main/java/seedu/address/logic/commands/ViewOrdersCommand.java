@@ -66,7 +66,7 @@ public class ViewOrdersCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DeleteCommand)) {
+        if (!(other instanceof ViewOrdersCommand)) {
             return false;
         }
 
