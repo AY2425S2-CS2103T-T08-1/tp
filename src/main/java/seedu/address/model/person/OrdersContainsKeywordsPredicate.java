@@ -29,7 +29,7 @@ public class OrdersContainsKeywordsPredicate implements Predicate<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof NameContainsKeywordsPredicate)) {
+        if (!(other instanceof OrdersContainsKeywordsPredicate)) {
             return false;
         }
 
