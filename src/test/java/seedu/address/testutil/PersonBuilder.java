@@ -97,9 +97,15 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Constructs and returns a new {@code Person} instance with the stored details.
+     *
+     * @return A new {@code Person} instance with the stored details and populated order history.
+     */
     public Person build() {
         Person person = new Person(name, phone, tag, preference);
 
+        //Populate the orderHistory for Person
         for (Map.Entry<String, Integer> entry : orderHistory.entrySet()) {
             String orderName = entry.getKey();
             int times = entry.getValue();
