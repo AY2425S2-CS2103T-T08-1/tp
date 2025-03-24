@@ -118,6 +118,7 @@
         "deleting-a-customer-delete": "Deleting a customer : delete",
         "tag-a-customer-tag": "Tag a customer : tag",
         "store-a-customer-s-dietary-preferences-savepreference": "Store a customer's dietary preferences : savePreference",
+        "finding-customers-by-dietary-preferences-findpreferences": "Finding customers by dietary preferences : findPreferences",
         "clearing-all-entries-clear": "Clearing all entries : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
