@@ -198,6 +198,19 @@ Format: `findPreferences PREFERENCE`
 Examples:
 * `findPreferences no fish` will list all customers that have `no fish` under their dietary preferences.
 
+### View a customer's past orders : `viewOrders`
+
+Views a customer's past orders in the address book.
+
+Format: `viewOrders INDEX`
+
+* Views the past orders of the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
+
 ### Locating customers by past orders: `findOrders`
 
 Finds persons whose past orders contain any of the given keywords.
