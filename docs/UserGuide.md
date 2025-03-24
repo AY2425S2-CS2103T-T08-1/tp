@@ -177,6 +177,19 @@ Examples:
 * `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
 * `savePreference 1 s/no beef s/no fish` will save multiple dietary preferences for a customer.
 
+### View a customer's past orders : `viewOrders`
+
+Views a customer's past orders in the address book.
+
+Format: `viewOrders INDEX`
+
+* Views the past orders of the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
