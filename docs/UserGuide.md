@@ -198,6 +198,20 @@ Format: `findPreferences PREFERENCE`
 Examples:
 * `findPreferences no fish` will list all customers that have `no fish` under their dietary preferences.
 
+### Locating customers by past orders: `findOrders`
+
+Finds persons whose past orders contain any of the given keywords.
+
+Format: `findOrders KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `milo` will match `Milo`
+* The order of the keywords does not matter. e.g. `Milo Soup` will match `Soup Milo`
+* Only the orders is searched.
+* Only full words will be matched e.g. `ChickenRice` will not match `Chicken`
+
+Examples:
+* `find milo` returns `John` and `Alice` who both ordered `milo`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -253,7 +267,8 @@ _Details coming soon ..._
 | **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                       |
 | **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                  |
 | **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`             |
-| **Find Preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                        |
-| **Find**            | `findOrders s/DISHNAME` <br> e.g., `findOrders s/chicken chop`                            |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                     |
+| **Find Preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                       |
 | **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                              |
+| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`                         |
 | **Help**            | `help`                                                                                    |
