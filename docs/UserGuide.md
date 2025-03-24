@@ -41,6 +41,8 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `savePreferences 1 no salt` : Add the preference "no salt" for customer in the 1st position
 
+   * `tag 2 t/VIP` : Tag the 2nd customer in contact book as VIP
+
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
