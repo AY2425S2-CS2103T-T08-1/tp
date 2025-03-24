@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# BiteBook User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+BiteBook is a **desktop app for managing customer details, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BiteBook can get your customer management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -78,7 +78,7 @@ Format: `help`
 
 ### Adding a customer: `add`
 
-Adds a person to the address book.
+Adds a customer to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 
@@ -116,7 +116,7 @@ Examples:
 
 ### Locating customers by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds customers whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -134,11 +134,11 @@ Examples:
 
 ### Deleting a customer : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified customer from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
+* Deletes the customer at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
@@ -148,11 +148,11 @@ Examples:
 
 ### Tag a customer : `tag`
 
-Tags a person in the address book as VIP, Regular or New.
+Tags a customer in the address book as VIP, Regular or New.
 
 Format: `tag INDEX t/TAG`
 
-* Tags the person at the specified `INDEX`.
+* Tags the customer at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * Existing tags of the person will be removed and replaced by the input tag.
