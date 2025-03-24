@@ -119,6 +119,7 @@
         "tag-a-customer-tag": "Tag a customer : tag",
         "store-a-customer-s-dietary-preferences-savepreference": "Store a customer's dietary preferences : savePreference",
         "finding-customers-by-dietary-preferences-findpreferences": "Finding customers by dietary preferences : findPreferences",
+        "view-a-customer-s-past-orders-vieworders": "View a customer's past orders : viewOrders",
         "locating-customers-by-past-orders-findorders": "Locating customers by past orders: findOrders",
         "clearing-all-entries-clear": "Clearing all entries : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
