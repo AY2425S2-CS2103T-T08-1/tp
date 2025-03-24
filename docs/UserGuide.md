@@ -177,6 +177,20 @@ Examples:
 * `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
 * `savePreference 1 s/no beef s/no fish` will save multiple dietary preferences for a customer.
 
+### Finding customers by dietary preferences : `findPreferences`
+
+Finds all customers that has a preference that matches
+
+Format: `findPreferences PREFERENCE`
+
+* Lists all customers that have `PREFERENCE` saved as their dietary preference.
+* The search is case-insensitive. e.g. `no seafood` will match with `No SeAfoOD`
+* The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or `no  seafood `
+* Only dietary preferences are searched.
+
+Examples:
+* `findPreferences no fish` will list all customers that have `no fish` under their dietary preferences.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -232,6 +246,7 @@ _Details coming soon ..._
 | **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                       |
 | **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                  |
 | **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`             |
+| **Find Preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                        |
 | **Find**            | `findOrders s/DISHNAME` <br> e.g., `findOrders s/chicken chop`                            |
 | **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                              |
 | **Help**            | `help`                                                                                    |
