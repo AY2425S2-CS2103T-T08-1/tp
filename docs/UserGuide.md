@@ -35,6 +35,12 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
+   * `find Chicken rice` : Finds all customer who ordered chicken rice.
+   
+   * `findPreferences no salt` : Finds all customer who prefer to not have salt.
+
+   * `savePreferences 1 no salt` : Add the preference "no salt" for customer in the 1st position
+
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
@@ -88,8 +94,7 @@ Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 t/VIP s/No salt`
 
 ### Listing all customers : `list`
 
