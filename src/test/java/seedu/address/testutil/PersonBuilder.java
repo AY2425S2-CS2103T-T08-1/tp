@@ -33,7 +33,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         tag = Optional.empty();
         preference = new Preference();
-        orderHistory = new HashMap<String, Integer>();
+        orderHistory = new HashMap<>();
     }
 
     /**
@@ -97,8 +97,24 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Constructs and returns a new {@code Person} instance with the stored details.
+     *
+     * @return A new {@code Person} instance with the stored details and populated order history.
+     */
     public Person build() {
-        return new Person(name, phone, tag, preference);
+        Person person = new Person(name, phone, tag, preference);
+
+        //Populate the orderHistory for Person
+        for (Map.Entry<String, Integer> entry : orderHistory.entrySet()) {
+            String orderName = entry.getKey();
+            int times = entry.getValue();
+            while (times > 0) {
+                person.addOrder(orderName);
+                times--;
+            }
+        }
+        return person;
     }
 
 }

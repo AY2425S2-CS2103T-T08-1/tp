@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# BiteBook User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+BiteBook is a **desktop app for managing customer details, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BiteBook can get your customer management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -34,6 +34,14 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    * `add n/John Doe p/98765432` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
+
+   * `find Chicken rice` : Finds all customer who ordered chicken rice.
+   
+   * `findPreferences no salt` : Finds all customer who prefer to not have salt.
+
+   * `savePreferences 1 no salt` : Add the preference "no salt" for customer in the 1st position
+
+   * `tag 2 t/VIP` : Tag the 2nd customer in contact book as VIP
 
    * `clear` : Deletes all contacts.
 
@@ -78,7 +86,7 @@ Format: `help`
 
 ### Adding a customer: `add`
 
-Adds a person to the address book.
+Adds a customer to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 
@@ -88,8 +96,7 @@ Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 t/VIP s/No salt`
 
 ### Listing all customers : `list`
 
@@ -116,7 +123,7 @@ Examples:
 
 ### Locating customers by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds customers whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -134,11 +141,11 @@ Examples:
 
 ### Deleting a customer : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified customer from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
+* Deletes the customer at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
@@ -148,11 +155,11 @@ Examples:
 
 ### Tag a customer : `tag`
 
-Tags a person in the address book as VIP, Regular or New.
+Tags a customer in the address book as VIP, Regular or New.
 
 Format: `tag INDEX t/TAG`
 
-* Tags the person at the specified `INDEX`.
+* Tags the customer at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * Existing tags of the person will be removed and replaced by the input tag.
@@ -177,6 +184,20 @@ Examples:
 * `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
 * `savePreference 1 s/no beef s/no fish` will save multiple dietary preferences for a customer.
 
+### Finding customers by dietary preferences : `findPreferences`
+
+Finds all customers that has a preference that matches
+
+Format: `findPreferences PREFERENCE`
+
+* Lists all customers that have `PREFERENCE` saved as their dietary preference.
+* The search is case-insensitive. e.g. `no seafood` will match with `No SeAfoOD`
+* The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or `no  seafood `
+* Only dietary preferences are searched.
+
+Examples:
+* `findPreferences no fish` will list all customers that have `no fish` under their dietary preferences.
+
 ### View a customer's past orders : `viewOrders`
 
 Views a customer's past orders in the address book.
@@ -189,6 +210,20 @@ Format: `viewOrders INDEX`
 
 Examples:
 * `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
+
+### Locating customers by past orders: `findOrders`
+
+Finds persons whose past orders contain any of the given keywords.
+
+Format: `findOrders KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `milo` will match `Milo`
+* The order of the keywords does not matter. e.g. `Milo Soup` will match `Soup Milo`
+* Only the orders is searched.
+* Only full words will be matched e.g. `ChickenRice` will not match `Chicken`
+
+Examples:
+* `find milo` returns `John` and `Alice` who both ordered `milo`
 
 ### Clearing all entries : `clear`
 
@@ -245,6 +280,8 @@ _Details coming soon ..._
 | **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                       |
 | **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                  |
 | **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`             |
-| **Find**            | `findOrders s/DISHNAME` <br> e.g., `findOrders s/chicken chop`                            |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                     |
+| **Find Preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                       |
 | **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                              |
+| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`                         |
 | **Help**            | `help`                                                                                    |
