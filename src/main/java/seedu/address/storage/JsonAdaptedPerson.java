@@ -43,7 +43,11 @@ class JsonAdaptedPerson {
         this.phone = phone;
         this.tag = tag;
         this.preference = preference;
-        this.orderHistory = (orderHistory != null) ? new HashMap<>(orderHistory) : new HashMap<>();
+        if (orderHistory == null) {
+            this.orderHistory = new HashMap<>();
+        } else {
+            this.orderHistory = new HashMap<>(orderHistory);
+        }
     }
 
     /**
@@ -88,9 +92,12 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
 
-        final Optional<Tag> modelTag = tag.isEmpty() ? Optional.empty() : Optional.of(new Tag(tag));
+        Optional<Tag> modelTag = Optional.empty();
+        if (!tag.isEmpty()) {
+            modelTag = Optional.of(new Tag(tag));
+        }
 
-        if (preference == null) {
+        if (preference == null || preference.length() < 2) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Preference"));
         }
 
@@ -102,6 +109,10 @@ class JsonAdaptedPerson {
         final Preference modelPreference = new Preference(list);
 
         Person person = new Person(modelName, modelPhone, modelTag, modelPreference);
+
+        if (orderHistory == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Order History"));
+        }
 
         // Restore the order history into the person object
         for (Map.Entry<String, Integer> entry : orderHistory.entrySet()) {
