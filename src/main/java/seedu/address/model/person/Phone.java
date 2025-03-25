@@ -23,6 +23,7 @@ public class Phone {
     public Phone(String phone) {
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
+        assert phone.length() >= 8;
         value = phone;
     }
 
