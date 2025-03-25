@@ -5,6 +5,7 @@ import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORM
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
@@ -98,6 +99,15 @@ public class JsonAdaptedPersonTest {
                 null, VALID_ORDER_HISTORY);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, "Preference");
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullOrderHistory_success() throws IllegalValueException {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_TAG,
+                VALID_PREFERENCE, null);
+        JsonAdaptedPerson expectedPerson = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_TAG,
+                VALID_PREFERENCE, new HashMap<>());
+        assertEquals(expectedPerson.toModelType(), person.toModelType());
     }
 
 }
