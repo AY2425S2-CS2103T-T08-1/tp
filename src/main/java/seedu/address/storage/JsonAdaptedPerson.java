@@ -43,7 +43,11 @@ class JsonAdaptedPerson {
         this.phone = phone;
         this.tag = tag;
         this.preference = preference;
-        this.orderHistory = (orderHistory != null) ? new HashMap<>(orderHistory) : new HashMap<>();
+        if (orderHistory == null) {
+            this.orderHistory = new HashMap<>();
+        } else {
+            this.orderHistory = new HashMap<>(orderHistory);
+        }
     }
 
     /**
@@ -88,7 +92,10 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
 
-        final Optional<Tag> modelTag = tag.isEmpty() ? Optional.empty() : Optional.of(new Tag(tag));
+        Optional<Tag> modelTag = Optional.empty();
+        if (!tag.isEmpty()) {
+            modelTag = Optional.of(new Tag(tag));
+        }
 
         if (preference == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Preference"));

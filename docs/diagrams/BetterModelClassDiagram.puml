@@ -4,18 +4,14 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-BiteBook *-right-> "1" UniquePersonList
-BiteBook *-right-> "1" UniqueTagList
-UniqueTagList -[hidden]down- UniquePersonList
-UniqueTagList -[hidden]down- UniquePersonList
+BiteBook *-down-> "1" UniquePersonList
 
-UniqueTagList -right-> "*" Tag
 UniquePersonList -right-> Person
 
-Person -up-> "*" Tag
+Person -up-> "0..1" Tag
 
 Person *--> Name
 Person *--> Phone
-Person *--> Email
-Person *--> Address
+Person *--> Preference
+Person *--> OrderHistory
 @enduml
