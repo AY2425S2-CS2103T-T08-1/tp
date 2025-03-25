@@ -21,9 +21,9 @@ public class Phone {
      * @param phone A valid phone number.
      */
     public Phone(String phone) {
-        assert phone.length() >= 8;
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
+        assert phone.length() >= 8;
         value = phone;
     }
 
