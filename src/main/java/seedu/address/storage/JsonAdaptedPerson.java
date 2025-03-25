@@ -97,7 +97,7 @@ class JsonAdaptedPerson {
             modelTag = Optional.of(new Tag(tag));
         }
 
-        if (preference == null) {
+        if (preference == null || preference.length() < 2) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Preference"));
         }
 
@@ -109,6 +109,10 @@ class JsonAdaptedPerson {
         final Preference modelPreference = new Preference(list);
 
         Person person = new Person(modelName, modelPhone, modelTag, modelPreference);
+
+        if (orderHistory == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Order History"));
+        }
 
         // Restore the order history into the person object
         for (Map.Entry<String, Integer> entry : orderHistory.entrySet()) {
