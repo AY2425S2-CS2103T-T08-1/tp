@@ -1,0 +1,38 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "u:SavePreferenceCommand" as SavePreferenceCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute(savePrefernece)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(savePreference)
+activate AddressBookParser
+
+create SavePreferenceCommand
+AddressBookParser -> SavePreferenceCommand
+activate SavePreferenceCommand
+
+SavePreferenceCommand --> AddressBookParser
+deactivate SavePreferenceCommand
+
+AddressBookParser --> LogicManager
+deactivate AddressBookParser
+
+LogicManager -> SavePreferenceCommand : execute()
+activate SavePreferenceCommand
+
+
+SavePreferenceCommand --> LogicManager : result
+deactivate SavePreferenceCommand
+SavePreferenceCommand -[hidden]-> LogicManager : result
+destroy SavePreferenceCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
