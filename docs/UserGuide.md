@@ -88,7 +88,7 @@ Format: `help`
 
 Adds a customer to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
+Format: `add n/NAME p/PHONE_NUMBER [t/TAG]`
 
 <box type="tip" seamless>
 
@@ -274,14 +274,14 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action              | Format, Examples                                                                          |
-|---------------------|-------------------------------------------------------------------------------------------|
-| **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]` <br> e.g., `add n/James Ho p/22224444` |
-| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                       |
-| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                  |
-| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`             |
-| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                     |
-| **Find Preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                       |
-| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                              |
-| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`                         |
-| **Help**            | `help`                                                                                    |
+| Action              | Format, Examples                                                              |
+|---------------------|-------------------------------------------------------------------------------|
+| **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG]` <br> e.g., `add n/James Ho p/22224444`    |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                           |
+| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                      |
+| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood` |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                         |
+| **Find Preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`           |
+| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                  |
+| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`             |
+| **Help**            | `help`                                                                        |
