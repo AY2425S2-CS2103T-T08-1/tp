@@ -1,0 +1,46 @@
+@startuml
+' Set style
+!include style.puml
+skinparam ArrowColor Black
+skinparam ParticipantPadding 10
+
+' Participants
+actor User
+participant LogicManager
+participant AddressBookParser
+participant AddOrderCommandParser
+participant AddOrderCommand
+participant Model
+participant Person
+
+User -> LogicManager : execute("addOrder 1 d/Chicken Rice")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("addOrder 1 d/Chicken Rice")
+activate AddressBookParser
+
+AddressBookParser -> AddOrderCommandParser : parse("1 d/Chicken Rice")
+activate AddOrderCommandParser
+
+AddOrderCommandParser -> AddOrderCommand : <<create>> (index=1, dish="chicken rice")
+deactivate AddOrderCommandParser
+deactivate AddressBookParser
+
+LogicManager -> AddOrderCommand : execute(Model)
+activate AddOrderCommand
+
+AddOrderCommand -> Model : getFilteredPersonList()
+Model --> AddOrderCommand : personList
+
+AddOrderCommand -> Person : addOrder("chicken rice")
+activate Person
+Person --> AddOrderCommand : (updated state)
+deactivate Person
+
+AddOrderCommand -> Model : setPerson(oldPerson, updatedPerson)
+
+AddOrderCommand --> LogicManager : CommandResult("Added order...")
+deactivate AddOrderCommand
+deactivate LogicManager
+
+@enduml
