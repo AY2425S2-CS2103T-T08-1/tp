@@ -10,9 +10,11 @@ import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.PREFERENCE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REGULAR;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERENCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REGULAR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -35,18 +37,18 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(BOB).withTag(VALID_TAG_REGULAR).build();
+        Person expectedPerson = new PersonBuilder(BOB).withTag(VALID_TAG_REGULAR)
+                .withPreference(VALID_PREFERENCE).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB
-                + PHONE_DESC_BOB + TAG_DESC_REGULAR, new AddCommand(expectedPerson));
+                + PHONE_DESC_BOB + TAG_DESC_REGULAR + PREFERENCE_DESC, new AddCommand(expectedPerson));
 
-
-        // multiple tags - all accepted
+        // multiple parameters - all accepted
         Person expectedPersonMultipleTags = new PersonBuilder(BOB).withTag(VALID_TAG_REGULAR)
-                .build();
+                .withPreference(VALID_PREFERENCE).build();
         assertParseSuccess(parser,
-                NAME_DESC_BOB + PHONE_DESC_BOB + TAG_DESC_REGULAR,
+                NAME_DESC_BOB + PHONE_DESC_BOB + TAG_DESC_REGULAR + PREFERENCE_DESC,
                 new AddCommand(expectedPersonMultipleTags));
     }
 
