@@ -170,6 +170,20 @@ Examples:
 * `tag 1 t/Regular t/VIP` tags the 1st person in the address book as VIP.
 * `tag 1 t/` will untag a customer.
 
+### Finding customers by tag : `findTag`
+
+Finds all customers that has the tag that matches
+
+Format: `findTag TAG`
+
+* Lists all customers that are tagged as `PREFERENCE`.
+* The `TAG` must be one of the following: VIP, Regular, New.
+* The search is case-insensitive. e.g. `ReGuLaR` will match with `Regular`.
+* Only tags are searched.
+
+Examples:
+* `findTag VIP` will list all customers that have been tagged `VIP`.
+
 ### Store a customer's dietary preferences : `savePreference`
 
 Stores a customer's dietary preferences in the address book.
@@ -274,14 +288,15 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action              | Format, Examples                                                              |
-|---------------------|-------------------------------------------------------------------------------|
-| **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG]` <br> e.g., `add n/James Ho p/22224444`    |
-| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                           |
-| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                      |
+| Action              | Format, Examples                                                           |
+|---------------------|----------------------------------------------------------------------------|
+| **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG]` <br> e.g., `add n/James Ho p/22224444` |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                        |
+| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                   |
+| **Find tag**        | `findTag TAG`<br> e.g., `findTag VIP`                                      |
 | **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood` |
-| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                         |
-| **Find Preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`           |
-| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                  |
-| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`             |
-| **Help**            | `help`                                                                        |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                      |
+| **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`        |
+| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                               |
+| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`          |
+| **Help**            | `help`                                                                     |
