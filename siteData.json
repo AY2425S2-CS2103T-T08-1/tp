@@ -117,6 +117,7 @@
         "locating-customers-by-name-find": "Locating customers by name: find",
         "deleting-a-customer-delete": "Deleting a customer : delete",
         "tag-a-customer-tag": "Tag a customer : tag",
+        "finding-customers-by-tag-findtag": "Finding customers by tag : findTag",
         "store-a-customer-s-dietary-preferences-savepreference": "Store a customer's dietary preferences : savePreference",
         "finding-customers-by-dietary-preferences-findpreferences": "Finding customers by dietary preferences : findPreferences",
         "view-a-customer-s-past-orders-vieworders": "View a customer's past orders : viewOrders",
