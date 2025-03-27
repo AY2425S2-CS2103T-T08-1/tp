@@ -29,7 +29,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_TAG, PREFIX_PREFERENCE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -39,16 +39,18 @@ public class AddCommandParser implements Parser<AddCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
+
         Optional<Tag> tag = Optional.empty();
         if (argMultimap.getValue(PREFIX_TAG).isPresent()) {
             tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
         }
+
         Preference preference = new Preference();
         if (argMultimap.getValue(PREFIX_PREFERENCE).isPresent()) {
-            ParserUtil.parsePreference(argMultimap.getValue(PREFIX_PREFERENCE).get());
+            preference = ParserUtil.parsePreference(argMultimap.getValue(PREFIX_PREFERENCE).get());
         }
-        Person person = new Person(name, phone, tag, preference);
 
+        Person person = new Person(name, phone, tag, preference);
         return new AddCommand(person);
     }
 

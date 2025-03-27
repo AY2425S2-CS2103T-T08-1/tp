@@ -64,7 +64,7 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/VIP` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[s/PREFERENCE]…​` can be used as ` ` (i.e. 0 times), `s/no beef`, `t/no beef t/no pork` etc.
+  e.g. `[s/PREFERENCE]…​` can be used (i.e. 0 times), `s/no beef`, `s/no beef s/no pork` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -88,11 +88,11 @@ Format: `help`
 
 Adds a customer to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [t/TAG]`
+Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of tags (including 0)
+**Tip:** A person can only have at most **1** tag
 </box>
 
 Examples:
@@ -103,23 +103,6 @@ Examples:
 Shows a list of all customers in the address book.
 
 Format: `list`
-
-### Editing a customer : `edit`
-
-Edits an existing customer in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
-
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 ### Locating customers by name: `find`
 
@@ -288,15 +271,15 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action              | Format, Examples                                                           |
-|---------------------|----------------------------------------------------------------------------|
-| **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG]` <br> e.g., `add n/James Ho p/22224444` |
-| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                        |
-| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                   |
-| **Find tag**        | `findTag TAG`<br> e.g., `findTag VIP`                                      |
-| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood` |
-| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                      |
-| **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`        |
-| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                               |
-| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`          |
-| **Help**            | `help`                                                                     |
+| Action              | Format, Examples                                                                         |
+|---------------------|------------------------------------------------------------------------------------------|
+| **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFRENCE]` <br> e.g., `add n/James Ho p/22224444` |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                      |
+| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                 |
+| **Find tag**        | `findTag TAG`<br> e.g., `findTag VIP`                                                    |
+| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`            |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                    |
+| **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                      |
+| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                             |
+| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`                        |
+| **Help**            | `help`                                                                                   |
