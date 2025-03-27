@@ -1,11 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-
-import java.util.function.Predicate;
+import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.PreferenceContainsKeywordPredicate;
+
 
 /**
  * Finds and lists all persons in address book who have a certain preference.
@@ -19,11 +19,9 @@ public class FindPreferencesCommand extends Command {
             + "Parameters: PREFERENCE\n"
             + "Example: " + COMMAND_WORD + " no seafood";
 
-    public static final String MESSAGE_SUCCESS = "%d persons listed!";
+    private final PreferenceContainsKeywordPredicate predicate;
 
-    private final Predicate<Person> predicate;
-
-    public FindPreferencesCommand(Predicate<Person> predicate) {
+    public FindPreferencesCommand(PreferenceContainsKeywordPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -32,7 +30,7 @@ public class FindPreferencesCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
-                String.format(MESSAGE_SUCCESS, model.getFilteredPersonList().size()));
+                String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
 
     @Override

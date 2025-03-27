@@ -12,6 +12,7 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -27,7 +28,7 @@ public class FindPreferencesCommandTest {
 
     @Test
     public void execute_singleKeyword_singleMatch() {
-        String expectedMessage = String.format(FindPreferencesCommand.MESSAGE_SUCCESS, 1);
+        String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
         PreferenceContainsKeywordPredicate predicate = new PreferenceContainsKeywordPredicate("no seafood");
         FindPreferencesCommand command = new FindPreferencesCommand(predicate);
 
@@ -38,7 +39,7 @@ public class FindPreferencesCommandTest {
 
     @Test
     public void execute_noMatchingPreferences_noResults() {
-        String expectedMessage = String.format(FindPreferencesCommand.MESSAGE_SUCCESS, 0);
+        String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
         PreferenceContainsKeywordPredicate predicate = new PreferenceContainsKeywordPredicate("keto");
         FindPreferencesCommand command = new FindPreferencesCommand(predicate);
 
@@ -49,7 +50,7 @@ public class FindPreferencesCommandTest {
 
     @Test
     public void execute_caseInsensitiveSearch_matchesCorrectly() {
-        String expectedMessage = String.format(FindPreferencesCommand.MESSAGE_SUCCESS, 1);
+        String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
         PreferenceContainsKeywordPredicate predicate = new PreferenceContainsKeywordPredicate("NO SEAFOOD");
         FindPreferencesCommand command = new FindPreferencesCommand(predicate);
 

@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.logic.commands.FindPreferencesCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -14,13 +15,14 @@ public class FindPreferencesCommandParser implements Parser<FindPreferencesComma
     /**
      * Parses the given {@code String} of arguments in the context of the FindPreferencesCommand
      * and returns a FindPreferencesCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
      */
     public FindPreferencesCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
-            throw new ParseException(String.format("Invalid command format! \n%s",
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     FindPreferencesCommand.MESSAGE_USAGE));
         }
 
