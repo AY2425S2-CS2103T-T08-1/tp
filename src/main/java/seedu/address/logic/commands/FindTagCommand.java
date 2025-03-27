@@ -6,6 +6,9 @@ import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import seedu.address.model.Model;
 import seedu.address.model.person.TagContainsKeywordPredicate;
 
+/**
+ * Finds all customers with a specific tag.
+ */
 public class FindTagCommand extends Command {
 
     public static final String COMMAND_WORD = "findTag";
