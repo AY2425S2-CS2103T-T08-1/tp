@@ -88,7 +88,7 @@ Format: `help`
 
 Adds a customer to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
+Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 
 <box type="tip" seamless>
 
@@ -97,6 +97,7 @@ Format: `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 
 Examples:
 * `add n/John Doe p/98765432 t/VIP s/No salt`
+* `add n/John Doe t/VIP p/98765432 s/No salt`
 
 ### Listing all customers : `list`
 

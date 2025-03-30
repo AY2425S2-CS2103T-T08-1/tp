@@ -20,16 +20,22 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
-            + "Parameters: "
+            + "Parameters (In any order): "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
             + "[" + PREFIX_TAG + "TAG]\n"
             + "[" + PREFIX_PREFERENCE + "PREFERENCE]...\n"
-            + "Example: " + COMMAND_WORD + " "
+            + "Example:\n"
+            + "-" + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_TAG + "VIP "
-            + PREFIX_PREFERENCE + "Vegetarian";
+            + PREFIX_PREFERENCE + "Vegetarian\n"
+            + "-" + COMMAND_WORD + " "
+            + PREFIX_PHONE + "912345678 "
+            + PREFIX_NAME + "Jane Doe "
+            + PREFIX_PREFERENCE + "Vegetarian "
+            + PREFIX_TAG + "VIP ";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "Duplicate contact. Name and phone number already exist";
