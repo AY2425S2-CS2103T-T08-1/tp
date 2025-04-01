@@ -24,7 +24,7 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/newUi.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -195,6 +195,26 @@ Format: `findPreferences PREFERENCE`
 
 Examples:
 * `findPreferences no fish` will list all customers that have `no fish` under their dietary preferences.
+
+### Add a customer's past orders : `addOrder`
+
+Adds an order to the customer’s order history.
+
+Format: `addOrder INDEX d/DISH_NAME`
+
+* Adds the order to the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* The order **must be a non-empty string**.
+* The order is case-insensitive. e.g. `milo` will match `Milo`
+* The order is space-sensitive, except for multiple spaces. e.g. `Chicken Rice` will not match 'ChickenRice' but will match ` Chicken     Rice `
+* The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
+* Only dishes with every word the same will be matched e.g. `ChickenRice` will not match `Chicken`
+* If more than one dish is provided, only the last dish will be saved.
+
+Examples:
+* `list` followed by `addOrder 2 d/milo` adds `milo` to the past orders of the 2nd person in the address book.
+* `addOrder 1 d/Iced Milo d/Chicken Rice` adds `Chicken Rice` to the past orders of the 1st person in the address book.
 
 ### View a customer's past orders : `viewOrders`
 

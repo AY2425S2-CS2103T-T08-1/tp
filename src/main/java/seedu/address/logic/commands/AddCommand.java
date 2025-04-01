@@ -23,7 +23,7 @@ public class AddCommand extends Command {
             + "Parameters (In any order): "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
-            + "[" + PREFIX_TAG + "TAG]\n"
+            + "[" + PREFIX_TAG + "TAG] "
             + "[" + PREFIX_PREFERENCE + "PREFERENCE]...\n"
             + "Example:\n"
             + "-" + COMMAND_WORD + " "
