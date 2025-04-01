@@ -56,8 +56,8 @@ public class ViewOrdersCommand extends Command {
 
         String messageWithOrders = message + String.join(", ",
                 personToView.getOrderHistory().entrySet().stream()
-                        .map(entry -> entry.getKey() + " (" + entry.getValue() +
-                        (entry.getValue() > 1 ? " times)" : " time)"))
+                        .map(entry -> entry.getKey() + " (" + entry.getValue()
+                        + (entry.getValue() > 1 ? " times)" : " time)"))
                         .toList()
         );
 
