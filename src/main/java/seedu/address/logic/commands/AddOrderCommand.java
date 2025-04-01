@@ -25,7 +25,7 @@ public class AddOrderCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Added order: %s to %s";
     public static final String MESSAGE_INVALID_PERSON = "The person index provided is invalid.";
-
+    public static final String MESSAGE_EMPTY_DISH = "The dish name cannot be empty.";
     private final Index index;
     private final String dishName;
 
@@ -56,6 +56,10 @@ public class AddOrderCommand extends Command {
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        if (dishName.isBlank()) {
+            throw new CommandException(MESSAGE_EMPTY_DISH);
         }
 
         Person customer = lastShownList.get(index.getZeroBased());
