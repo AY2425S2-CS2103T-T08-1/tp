@@ -54,7 +54,12 @@ public class ViewOrdersCommand extends Command {
             return new CommandResult(message + "No past orders.");
         }
 
-        String messageWithOrders = message + String.join(",", personToView.getOrderHistory().keySet());
+        String messageWithOrders = message + String.join(", ",
+                personToView.getOrderHistory().entrySet().stream()
+                        .map(entry -> entry.getKey() + " (" + entry.getValue()
+                        + (entry.getValue() > 1 ? " times)" : " time)"))
+                        .toList()
+        );
 
         return new CommandResult(messageWithOrders);
     }
