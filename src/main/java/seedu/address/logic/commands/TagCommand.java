@@ -65,7 +65,9 @@ public class TagCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(
-                personToEdit.getName(), personToEdit.getPhone(), newTag, personToEdit.getPreference());
+                personToEdit.getName(), personToEdit.getPhone(), newTag,
+                personToEdit.getPreference(), personToEdit.getOrderHistory());
+
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

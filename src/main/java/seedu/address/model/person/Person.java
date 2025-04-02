@@ -38,6 +38,19 @@ public class Person {
     }
 
     /**
+     * Every field must be present and not null.
+     */
+    public Person(Name name, Phone phone, Optional<Tag> tag, Preference preference,
+                  HashMap<String, Integer> orderHistory) {
+        requireAllNonNull(name, phone, tag, preference);
+        this.name = name;
+        this.phone = phone;
+        this.tag = tag;
+        this.preference = preference;
+        this.orderHistory = orderHistory;
+    }
+
+    /**
      * Copy constructor to create a new Person with the same details but updated order history.
      */
     public Person(Person other) {
@@ -84,7 +97,7 @@ public class Person {
      *
      * @return A {@code Map<String, Integer>} representing the customer's order history.
      */
-    public Map<String, Integer> getOrderHistory() {
+    public HashMap<String, Integer> getOrderHistory() {
         return orderHistory;
     }
 
