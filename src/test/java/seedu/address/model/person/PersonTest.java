@@ -9,14 +9,30 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REGULAR;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.tag.Tag;
 import seedu.address.testutil.PersonBuilder;
 
 public class PersonTest {
+
+    @Test
+    public void constructors() {
+        Person person = new PersonBuilder().build();
+        Name name = person.getName();
+        Phone phone = person.getPhone();
+        Optional<Tag> tag = person.getTag();
+        Preference preference = person.getPreference();
+        HashMap<String, Integer> orderHistory = person.getOrderHistory();
+        Person newPerson = new Person(name, phone, tag, preference, orderHistory);
+        Person newPerson2 = new Person(person);
+        assertEquals(person, newPerson);
+        assertEquals(person, newPerson2);
+    }
 
     @Test
     public void isSamePerson() {

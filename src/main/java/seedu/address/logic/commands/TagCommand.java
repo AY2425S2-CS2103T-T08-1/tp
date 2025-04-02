@@ -60,12 +60,17 @@ public class TagCommand extends Command {
         Optional<Tag> newTag = Optional.empty();
 
         if (!tag.equals("")) {
+            if (!Tag.isValidTagName(tag)) {
+                throw new CommandException(Tag.MESSAGE_CONSTRAINTS);
+            }
             newTag = Optional.of(new Tag(tag));
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(
-                personToEdit.getName(), personToEdit.getPhone(), newTag, personToEdit.getPreference());
+                personToEdit.getName(), personToEdit.getPhone(), newTag,
+                personToEdit.getPreference(), personToEdit.getOrderHistory());
+
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
