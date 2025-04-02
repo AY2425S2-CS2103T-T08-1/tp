@@ -60,6 +60,9 @@ public class TagCommand extends Command {
         Optional<Tag> newTag = Optional.empty();
 
         if (!tag.equals("")) {
+            if (!Tag.isValidTagName(tag)) {
+                throw new CommandException(Tag.MESSAGE_CONSTRAINTS);
+            }
             newTag = Optional.of(new Tag(tag));
         }
 

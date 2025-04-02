@@ -3,17 +3,28 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Messages;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.tag.Tag;
 
 
 /**
  * Contains unit tests for TagCommand.
  */
 public class TagCommandTest {
+    private static final String VALID_TAG = "VIP";
+    private static final String INVALID_TAG = "friend";
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+
     @Test
     public void constructor_nullIndex_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new TagCommand(null, "VIP"));
@@ -53,5 +64,21 @@ public class TagCommandTest {
                 + tagCommand.index + ", tag="
                 + tagCommand.tag + "}";
         assertEquals(expected, tagCommand.toString());
+    }
+
+    @Test
+    public void execute_invalidIndex_throwsCommandException() {
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+        TagCommand tagCommand = new TagCommand(outOfBoundIndex, VALID_TAG);
+
+        assertCommandFailure(tagCommand, model, TagCommand.MESSAGE_INVALID_INDEX);
+    }
+
+    @Test
+    public void execute_invalidTag_throwsCommandException() {
+        Index index = Index.fromOneBased(1);
+        TagCommand tagCommand = new TagCommand(index, INVALID_TAG);
+
+        assertCommandFailure(tagCommand, model, Tag.MESSAGE_CONSTRAINTS);
     }
 }
