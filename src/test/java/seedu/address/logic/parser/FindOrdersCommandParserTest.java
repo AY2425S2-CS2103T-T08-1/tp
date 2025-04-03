@@ -4,8 +4,6 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
-import java.util.Arrays;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindOrdersCommand;
@@ -25,11 +23,13 @@ public class FindOrdersCommandParserTest {
     public void parse_validArgs_returnsFindOrdersCommand() {
         // no leading and trailing whitespaces
         FindOrdersCommand expectedFindOrdersCommand =
-                new FindOrdersCommand(new OrdersContainsKeywordsPredicate(Arrays.asList("chickenrice", "milo")));
-        assertParseSuccess(parser, "chickenrice milo", expectedFindOrdersCommand);
+                new FindOrdersCommand(new OrdersContainsKeywordsPredicate("chicken rice"));
+        assertParseSuccess(parser, "chicken rice", expectedFindOrdersCommand);
+        assertParseSuccess(parser, "Chicken Rice", expectedFindOrdersCommand);
+        assertParseSuccess(parser, "   chicken rice    ", expectedFindOrdersCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " \n chickenrice \n \t milo \t", expectedFindOrdersCommand);
+        assertParseSuccess(parser, " \n chicken rice \t", expectedFindOrdersCommand);
     }
 
 }
