@@ -32,11 +32,11 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
     * `list` : Lists all contacts.
     * `add n/John Doe p/98765432` : Adds a contact named `John Doe` to the Address Book.
     * `delete 3` : Deletes the 3rd contact shown in the current list.
-    * `find Chicken rice` : Finds all customer who ordered chicken rice.
+    * `findOrders Chicken rice` : Finds all customer who ordered chicken rice.
     * `findPreferences no salt` : Finds all customer who prefer to not have salt.
-    * `savePreferences 1 no salt` : Add the preference "no salt" for customer in the 1st position
-    * `tag 2 t/VIP` : Tag the 2nd customer in contact book as VIP
-    * `addOrder 1 d/Chicken Rice` : Add "Chicken Rice" to the 1st customer's past orders
+    * `savePreferences 1 no salt` : Adds the preference "no salt" for customer in the 1st position
+    * `tag 2 t/VIP` : Tags the 2nd customer in contact book as VIP
+    * `addOrder 1 d/Chicken Rice` : Adds "Chicken Rice" to the 1st customer's past orders
     * `clear` : Deletes all contacts.
     * `exit` : Exits the app.
 
