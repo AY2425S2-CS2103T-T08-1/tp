@@ -29,23 +29,16 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
-
-   * `add n/John Doe p/98765432` : Adds a contact named `John Doe` to the Address Book.
-
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * `find Chicken rice` : Finds all customer who ordered chicken rice.
-   
-   * `findPreferences no salt` : Finds all customer who prefer to not have salt.
-
-   * `savePreferences 1 no salt` : Add the preference "no salt" for customer in the 1st position
-
-   * `tag 2 t/VIP` : Tag the 2nd customer in contact book as VIP
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
+    * `list` : Lists all contacts.
+    * `add n/John Doe p/98765432` : Adds a contact named `John Doe` to the Address Book.
+    * `delete 3` : Deletes the 3rd contact shown in the current list.
+    * `find Chicken rice` : Finds all customer who ordered chicken rice.
+    * `findPreferences no salt` : Finds all customer who prefer to not have salt.
+    * `savePreferences 1 no salt` : Add the preference "no salt" for customer in the 1st position
+    * `tag 2 t/VIP` : Tag the 2nd customer in contact book as VIP
+    * `addOrder 1 d/Chicken Rice` : Add "Chicken Rice" to the 1st customer's past orders
+    * `clear` : Deletes all contacts.
+    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -73,7 +66,7 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+  </box>
 
 ### Viewing help : `help`
 
@@ -83,7 +76,6 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
-
 ### Adding a customer: `add`
 
 Adds a customer to the address book.
@@ -91,13 +83,14 @@ Adds a customer to the address book.
 Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 
 <box type="tip" seamless>
-
 **Tip:** A person can only have at most **1** tag
 </box>
 
 Examples:
 * `add n/John Doe p/98765432 t/VIP s/No salt`
 * `add n/John Doe t/VIP p/98765432 s/No salt`
+
+![add command](images/AddCommand.png)
 
 ### Listing all customers : `list`
 
@@ -116,12 +109,12 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Only the name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+
+![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting a customer : `delete`
 
@@ -136,6 +129,8 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+![delete command](images/DeleteCommand.png)
 
 ### Tag a customer : `tag`
 
@@ -154,16 +149,17 @@ Examples:
 * `tag 1 t/Regular t/VIP` tags the 1st person in the address book as VIP.
 * `tag 1 t/` will untag a customer.
 
+![tag command](images/Tag.png)
+
 ### Finding customers by tag : `findTag`
 
 Finds all customers that has the tag that matches
 
 Format: `findTag TAG`
 
-* Lists all customers that are tagged as `PREFERENCE`.
+* Lists all customers that are tagged as `TAG`.
 * The `TAG` must be one of the following: VIP, Regular, New.
 * The search is case-insensitive. e.g. `ReGuLaR` will match with `Regular`.
-* Only tags are searched.
 
 Examples:
 * `findTag VIP` will list all customers that have been tagged `VIP`.
@@ -174,13 +170,9 @@ Stores a customer's dietary preferences in the address book.
 
 Format: `savePreference INDEX s/PREFERENCE`
 
-* Stores the dietary preference of the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
 Examples:
-* `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
-* `savePreference 1 s/no beef s/no fish` will save multiple dietary preferences for a customer.
+* `list` followed by `savePreference 2 s/no beef`
+* `savePreference 1 s/no beef s/no fish`
 
 ### Finding customers by dietary preferences : `findPreferences`
 
@@ -188,13 +180,11 @@ Finds all customers that has a preference that matches
 
 Format: `findPreferences PREFERENCE`
 
-* Lists all customers that have `PREFERENCE` saved as their dietary preference.
-* The search is case-insensitive. e.g. `no seafood` will match with `No SeAfoOD`
-* The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or `no  seafood `
-* Only dietary preferences are searched.
+* Search is case-insensitive.
+* Search is space-sensitive.
 
 Examples:
-* `findPreferences no fish` will list all customers that have `no fish` under their dietary preferences.
+* `findPreferences no fish`
 
 ### Add a customer's past orders : `addOrder`
 
@@ -203,71 +193,48 @@ Adds an order to the customer’s order history.
 Format: `addOrder INDEX d/DISH_NAME`
 
 * Adds the order to the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The order **must be a non-empty string**.
-* The order is case-insensitive. e.g. `milo` will match `Milo`
-* The order is space-sensitive, except for multiple spaces. e.g. `Chicken Rice` will not match 'ChickenRice' but will match ` Chicken     Rice `
-* The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
-* Only dishes with every word the same will be matched e.g. `ChickenRice` will not match `Chicken`
-* If more than one dish is provided, only the last dish will be saved.
+* The dish is normalized: lowercased, trimmed, and spaces collapsed.
+* Repeated orders increase the count.
+* Top 3 dishes are displayed in the UI.
 
 Examples:
-* `list` followed by `addOrder 2 d/milo` adds `milo` to the past orders of the 2nd person in the address book.
-* `addOrder 1 d/Iced Milo d/Chicken Rice` adds `Chicken Rice` to the past orders of the 1st person in the address book.
+* `addOrder 2 d/milo`
+* `addOrder 1 d/Iced Milo d/Chicken Rice`
+
+![add order command](images/AddOrderCommand.png)
 
 ### View a customer's past orders : `viewOrders`
 
-Views a customer's past orders in the address book.
-
 Format: `viewOrders INDEX`
 
-* Views the past orders of the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
 Examples:
-* `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
+* `viewOrders 2`
 
 ### Locating customers by past orders: `findOrders`
 
-Finds persons whose past orders contain any of the given keywords.
-
 Format: `findOrders KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `milo` will match `Milo`
-* The order of the keywords does not matter. e.g. `Milo Soup` will match `Soup Milo`
-* Only the orders is searched.
-* Only full words will be matched e.g. `ChickenRice` will not match `Chicken`
-
 Examples:
-* `find milo` returns `John` and `Alice` who both ordered `milo`
+* `findOrders milo`
 
 ### Clearing all entries : `clear`
-
-Clears all entries from the address book.
 
 Format: `clear`
 
 ### Exiting the program : `exit`
 
-Exits the program.
-
 Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+AddressBook data are saved automatically after any command that changes the data.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+AddressBook data are saved in `[JAR file location]/data/addressbook.json`.
 
 <box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+**Caution:** If you edit the JSON file manually, take a backup first.
 </box>
 
 ### Archiving data files `[coming in v2.0]`
@@ -279,14 +246,14 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and copy the data file over.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+1. On multiple screens, the GUI may open off-screen if previously moved.
+2. Help window does not reappear if minimized — restore it manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -301,6 +268,9 @@ _Details coming soon ..._
 | **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`             |
 | **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                     |
 | **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                       |
+| **Add order**       | `addOrder INDEX d/DISH`<br> e.g., `addOrder 1 d/Chicken Rice`                             |
 | **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                              |
 | **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`                         |
+| **Clear**           | `clear`                                                                                   |
+| **Exit**            | `exit`                                                                                    |
 | **Help**            | `help`                                                                                    |
