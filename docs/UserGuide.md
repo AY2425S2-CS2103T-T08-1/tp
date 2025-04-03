@@ -227,14 +227,14 @@ Examples:
 
 ### Locating customers by past orders: `findOrders`
 
-Finds persons whose past orders contain any of the given keywords.
+Finds persons whose past orders contain the given keyword.
 
-Format: `findOrders KEYWORD [MORE_KEYWORDS]`
+Format: `findOrders KEYWORD`
 
 * The search is case-insensitive. e.g `milo` will match `Milo`
-* The order of the keywords does not matter. e.g. `Milo Soup` will match `Soup Milo`
-* Only the orders is searched.
-* Only full words will be matched e.g. `ChickenRice` will not match `Chicken`
+* The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
+* Only the orders are searched.
+* Only customers with a dish containing the whole keyword will be matched.
 
 Examples:
 * `find milo` returns `John` and `Alice` who both ordered `milo`
@@ -284,18 +284,18 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action              | Format, Examples                                                                          |
-|---------------------|-------------------------------------------------------------------------------------------|
+| Action              | Format, Examples                                                                         |
+|---------------------|------------------------------------------------------------------------------------------|
 | **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]` <br> e.g., `add n/James Ho p/22224444` |
-| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                       |
-| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                  |
-| **Find tag**        | `findTag TAG`<br> e.g., `findTag VIP`                                                     |
-| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`             |
-| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                     |
-| **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                       |
-| **Add order**       | `addOrder INDEX d/DISH`<br> e.g., `addOrder 1 d/Chicken Rice`                             |
-| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                              |
-| **Find orders**     | `findOrders KEYWORD [MORE_KEYWORDS]` <br> e.g., `findOrders milo`                         |
-| **Clear**           | `clear`                                                                                   |
-| **Exit**            | `exit`                                                                                    |
-| **Help**            | `help`                                                                                    |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                      |
+| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                 |
+| **Find tag**        | `findTag TAG`<br> e.g., `findTag VIP`                                                    |
+| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`            |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                    |
+| **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                      |
+| **Add order**       | `addOrder INDEX d/DISH`<br> e.g., `addOrder 1 d/Chicken Rice`                            |
+| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                             |
+| **Find orders**     | `findOrders KEYWORD` <br> e.g., `findOrders milo`                         |
+| **Clear**           | `clear`                                                                                  |
+| **Exit**            | `exit`                                                                                   |
+| **Help**            | `help`                                                                                   |

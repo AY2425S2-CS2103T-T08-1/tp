@@ -1,25 +1,22 @@
 package seedu.address.model.person;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code Person}'s {@code Orders} matches any of the keywords given.
+ * Tests that a {@code Person}'s {@code Orders} matches the keywords given.
  */
 public class OrdersContainsKeywordsPredicate implements Predicate<Person> {
-    private final List<String> keywords;
+    private final String keywords;
 
-    public OrdersContainsKeywordsPredicate(List<String> keywords) {
+    public OrdersContainsKeywordsPredicate(String keywords) {
         this.keywords = keywords;
     }
 
     @Override
     public boolean test(Person person) {
-        return keywords.stream()
-                .anyMatch(keyword -> person.getOrderHistory()
-                        .containsKey(keyword.trim().toLowerCase().replaceAll("\\s+", "")));
+        return person.getOrderHistory().keySet().stream().anyMatch(order -> order.contains(keywords));
     }
 
     @Override
