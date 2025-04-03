@@ -165,13 +165,25 @@ Given below is how the storing mechanism occurs:
 Step 1: The user launches the application for the first time. The VersionedAddressBook will be initialized with the 
 initial address book state, and the currentStatePointer pointing to that single address book state.
 
-Step 2: The user executes `savePreference 1 /sChicken rice`, causing a preference to be added to the customer
+Step 2: The user executes `savePreference 1 /sChicken rice`, causing a preference to be added to the customer.
 
 The following sequence diagram shows how an add preference operation goes through the Logic component:
 
 <puml src="diagrams/SavePreferenceDiagram-Logic.puml" alt="SavePreferenceDiagram-Logic" />
 
-Similarly, how an undo operation goes through the Model component is shown below:
+### \[Proposed\] Finding customers by dietary preferences feature
+
+Given below is how the filtering mechanism occurs:
+
+Step 1: The user launches the application for the first time. The VersionedAddressBook will be initialized with the
+initial address book state, and the currentStatePointer pointing to that single address book state.
+
+Step 2: The user executes `findPreferences no seafood`, causing customers who have that preference to be shown.
+
+The following sequence diagram shows how a find preference operation goes through the Logic component:
+
+<puml src="diagrams/FindPreferencesDiagram.puml" alt="FindPreferencesDiagram" />
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
