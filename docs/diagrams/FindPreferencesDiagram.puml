@@ -1,0 +1,38 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "u:FindPreferencesCommand" as FindPreferencesCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute(findPreferences)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(findPreferences)
+activate AddressBookParser
+
+create FindPreferencesCommand
+AddressBookParser -> FindPreferencesCommand
+activate FindPreferencesCommand
+
+FindPreferencesCommand --> AddressBookParser
+deactivate FindPreferencesCommand
+
+AddressBookParser --> LogicManager
+deactivate AddressBookParser
+
+LogicManager -> FindPreferencesCommand : execute()
+activate FindPreferencesCommand
+
+
+FindPreferencesCommand --> LogicManager : result
+deactivate FindPreferencesCommand
+FindPreferencesCommand -[hidden]-> LogicManager : result
+destroy FindPreferencesCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
