@@ -14,7 +14,7 @@ public class FindPreferencesCommand extends Command {
     public static final String COMMAND_WORD = "findPreferences";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all persons with the specified preference (case-sensitive) "
+            + ": Finds all persons with the specified preference (case-insensitive) "
             + "and displays them as a list with index numbers.\n"
             + "Parameters: PREFERENCE\n"
             + "Example: " + COMMAND_WORD + " no seafood";
