@@ -26,7 +26,7 @@ public class TagCommand extends Command {
             + "by the index number used in the last person listing. "
             + "Existing tag will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "t/ [TAG (Allowed values: VIP, Regular, New)]\n"
+            + "t/ TAG (Allowed values: VIP, Regular, New)\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + "t/ VIP";
 

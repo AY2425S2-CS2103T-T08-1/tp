@@ -1,7 +1,7 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: default.md
+title: "User Guide"
+pageNav: 3
 ---
 
 # BiteBook User Guide
@@ -34,7 +34,7 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
     * `delete 3` : Deletes the 3rd contact shown in the current list.
     * `findOrders Chicken rice` : Finds all customer who ordered chicken rice.
     * `findPreferences no salt` : Finds all customer who prefer to not have salt.
-    * `savePreferences 1 no salt` : Adds the preference "no salt" for customer in the 1st position
+    * `savePreference 1 s/no salt` : Adds the preference "no salt" for customer in the 1st position
     * `tag 2 t/VIP` : Tags the 2nd customer in contact book as VIP
     * `addOrder 1 d/Chicken Rice` : Adds "Chicken Rice" to the 1st customer's past orders
     * `clear` : Deletes all contacts.
@@ -45,8 +45,6 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
-
-<box type="info" seamless>
 
 **Notes about the command format:**<br>
 
@@ -66,7 +64,6 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-  </box>
 
 ### Viewing help : `help`
 
@@ -86,9 +83,8 @@ Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 * Two people with the same name and phone number are considered duplicated. This is not allowed
 * Phone number is at least 8 digits long.
 
-<box type="tip" seamless>
 **Tip:** A person can only have at most **1** tag
-</box>
+
 
 Examples:
 * `add n/John Doe p/98765432 t/VIP s/No salt`
@@ -129,6 +125,7 @@ Format: `delete INDEX`
 * Deletes the customer at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a valid index (in range)** in the current list of customers.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
@@ -177,10 +174,15 @@ Format: `savePreference INDEX s/PREFERENCE`
 * Stores the dietary preference of the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* The dietary preference must be a non-empty string and alphanumeric.
+* The dietary preference is case-insensitive. e.g. `no seafood` will match `No SeAfoOD`
+* The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no  seafood `
+* If the customer has the same dietary preference, it will not be added again.
+* If multiple dietary preferences are provided, only the last preference will be saved.
 
 Examples:
 * `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
-* `savePreference 1 s/no beef s/no fish` will save multiple dietary preferences for a customer.
+* `savePreference 1 s/no beef s/no fish` will only save "no fish" to the customer.
 
 ### Finding customers by dietary preferences : `findPreferences`
 
@@ -254,17 +256,16 @@ Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved automatically after any command that changes the data.
+BiteBook data are saved automatically after any command that changes the data.
 
 ### Editing the data file
 
-AddressBook data are saved in `[JAR file location]/data/addressbook.json`.
+BiteBook data are saved in `[JAR file location]/data/addressbook.json`.
 
-<box type="warning" seamless>
 **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
+If your changes to the data file make its format invalid, BiteBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the BiteBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+
 
 ### Archiving data files `[coming in v2.0]`
 
@@ -288,18 +289,18 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action              | Format, Examples                                                                         |
-|---------------------|------------------------------------------------------------------------------------------|
+| Action              | Format, Examples                                                                          |
+|---------------------|-------------------------------------------------------------------------------------------|
 | **Add**             | `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]` <br> e.g., `add n/James Ho p/22224444` |
-| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                      |
-| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                 |
-| **Find tag**        | `findTag TAG`<br> e.g., `findTag VIP`                                                    |
-| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`            |
-| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                    |
-| **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                      |
-| **Add order**       | `addOrder INDEX d/DISH`<br> e.g., `addOrder 1 d/Chicken Rice`                            |
-| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                             |
-| **Find orders**     | `findOrders KEYWORD` <br> e.g., `findOrders milo`                         |
-| **Clear**           | `clear`                                                                                  |
-| **Exit**            | `exit`                                                                                   |
-| **Help**            | `help`                                                                                   |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                       |
+| **Tag**             | `tag INDEX t/TAG`<br> e.g.,`tag 1 t/VIP`                                                  |
+| **Find tag**        | `findTag TAG`<br> e.g., `findTag VIP`                                                     |
+| **Save preference** | `savePreference INDEX s/PREFERENCE`<br> e.g., `savePreference 1 s/No seafood`             |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find john`                                     |
+| **Find preference** | `findPreferences PREFERENCE`<br> e.g., `findPreferences No seafood`                       |
+| **Add order**       | `addOrder INDEX d/DISH`<br> e.g., `addOrder 1 d/Chicken Rice`                             |
+| **View orders**     | `viewOrders INDEX` <br> e.g., `viewOrders 1`                                              |
+| **Find orders**     | `findOrders KEYWORD` <br> e.g., `findOrders milo`                                         |
+| **Clear**           | `clear`                                                                                   |
+| **Exit**            | `exit`                                                                                    |
+| **Help**            | `help`                                                                                    |

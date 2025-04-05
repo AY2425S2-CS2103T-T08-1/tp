@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# BiteBook Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -13,7 +13,7 @@
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+This project is based on the AddressBook-Level3 project created by the SE-EDU team. The original project was developed as part of the CS2103T Software Engineering module at the National University of Singapore (NUS). The AddressBook-Level3 project is an open-source project that serves as a template for students to learn software engineering principles and practices.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -158,25 +158,23 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Storing a customer's dietary preference feature
+### Storing a customer's dietary preference feature
 
 Given below is how the storing mechanism occurs:
 
-Step 1: The user launches the application for the first time. The VersionedAddressBook will be initialized with the 
-initial address book state, and the currentStatePointer pointing to that single address book state.
+Step 1: The user launches the application.
 
-Step 2: The user executes `savePreference 1 /sChicken rice`, causing a preference to be added to the customer.
+Step 2: The user executes `savePreference 1 s/Chicken rice`, causing a preference to be added to the customer.
 
 The following sequence diagram shows how an add preference operation goes through the Logic component:
 
 <puml src="diagrams/SavePreferenceDiagram-Logic.puml" alt="SavePreferenceDiagram-Logic" />
 
-### \[Proposed\] Finding customers by dietary preferences feature
+### Finding customers by dietary preferences feature
 
 Given below is how the filtering mechanism occurs:
 
-Step 1: The user launches the application for the first time. The VersionedAddressBook will be initialized with the
-initial address book state, and the currentStatePointer pointing to that single address book state.
+Step 1: The user launches the application.
 
 Step 2: The user executes `findPreferences no seafood`, causing customers who have that preference to be shown.
 
@@ -217,7 +215,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​          | I want to …​                                                                         | So that I can…​                                  |
 |----------|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------|
 | `* * *`  | Restaurant owner | add new customers to the address book                                                | keep track of their contact details              |
-| `* * *`  | Restaurant owner | edit customer details                                                                | update their contact information when necessary. |
 | `* * *`  | Restaurant owner | delete customer records                                                              | remove outdated or incorrect information         |
 | `* * *`  | Restaurant owner | tag customers with labels (e.g., VIP, Regular, New)                                  | personalize their experience                     |
 | `* * *`  | Restaurant owner | store customer preferences and allergies                                             | provide a personalized dining experience.        |
@@ -225,7 +222,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | Restaurant owner | see a customer’s past orders                                                         | recommend seasonal dishes they might enjoy       |
 | `* *`    | Restaurant owner | group customers by dining preferences (e.g., vegetarian, wine lovers, family diners) | offer them relevant recommendations              |
 | `* *`    | Restaurant owner | track customer satisfaction scores based on their feedback                           | improve my service.                              |
-*{More to be added}*
 
 ### Use cases
 
@@ -242,11 +238,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The same centry exists (i.e same name and number)
+* 1a. The same entry exists (i.e same name and number)
 
     * 1a1. Bitebook shows an error message.
 
-*{More to be added}*
 
 **Use case: Delete customers in the address book **
 
@@ -310,7 +305,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-* **Tags**: A marker flavpur text for each customer (E.g VIP)
+* **Tags**: A marker flavour text for each customer (E.g VIP)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -340,8 +335,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -357,12 +350,11 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+   1. Prerequisites: Executed the BiteBook jar file.
+   2. Delete the `data` folder in the same directory as the jar file.
+   3. Re-launch the app by double-clicking the jar file.
+   4. Expected: The app should create a new `data` folder and a new `addressbook.json` file in it. The app should show the GUI with a set of sample contacts.

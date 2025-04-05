@@ -10,6 +10,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Preference;
 
 /**
  * A command to save preference
@@ -22,7 +23,7 @@ public class SavePreferenceCommand extends Command {
             + ": Adds the preference to the customer identified "
             + "by the index number used in the last person listing.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "s/ [PREFERENCE]\n"
+            + "s/PREFERENCE\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + "s/no seafood";
 
@@ -52,10 +53,14 @@ public class SavePreferenceCommand extends Command {
         if (index.getZeroBased() >= model.getFilteredPersonList().size()) {
             throw new CommandException(MESSAGE_INVALID_INDEX);
         }
+        if (preference.isBlank() || !Preference.isValidPreference(preference)) {
+            throw new CommandException(Preference.MESSAGE_CONSTRAINTS);
+        }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         personToEdit.addPreference(preference);
 
+        model.setPerson(personToEdit, personToEdit);
         return new CommandResult(String.format(MESSAGE_SUCCESS, preference, Messages.format(personToEdit)));
     }
 
