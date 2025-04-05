@@ -40,7 +40,9 @@ public class Preference {
     }
 
     public void addPreference(String preference) {
-        preferences.add(preference);
+        if (!this.preferences.contains(preference)) {
+            preferences.add(preference);
+        }
     }
 
     @Override
