@@ -358,4 +358,3 @@ testers are expected to do more *exploratory* testing.
    2. Delete the `data` folder in the same directory as the jar file.
    3. Re-launch the app by double-clicking the jar file.
    4. Expected: The app should create a new `data` folder and a new `addressbook.json` file in it. The app should show the GUI with a set of sample contacts.
-   
