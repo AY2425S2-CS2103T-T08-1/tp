@@ -19,6 +19,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Preference;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -76,6 +77,14 @@ public class SavePreferenceCommandTest {
                 new SavePreferenceCommand(outOfBoundIndex, "no seafood");
 
         assertCommandFailure(savePreferenceCommand, model, SavePreferenceCommand.MESSAGE_INVALID_INDEX);
+    }
+
+    @Test
+    public void execute_invalidPreference_throwsCommandException() {
+        SavePreferenceCommand savePreferenceCommand =
+                new SavePreferenceCommand(INDEX_FIRST_PERSON, "invalid preference!");
+
+        assertCommandFailure(savePreferenceCommand, model, Preference.MESSAGE_CONSTRAINTS);
     }
 
     @Test
