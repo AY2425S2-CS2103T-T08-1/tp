@@ -39,6 +39,9 @@ public class Preference {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if a given string is a valid preference.
+     */
     public void addPreference(String preference) {
         if (!this.preferences.contains(preference)) {
             preferences.add(preference);
