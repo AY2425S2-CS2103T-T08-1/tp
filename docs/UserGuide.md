@@ -82,6 +82,10 @@ Adds a customer to the address book.
 
 Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
 
+* The search is case-insensitive. e.g `Sandy` will match `sandy`
+* Two people with the same name and phone number are considered duplicated. This is not allowed
+* Phone number is at least 8 digits long.
+
 <box type="tip" seamless>
 **Tip:** A person can only have at most **1** tag
 </box>

@@ -125,10 +125,7 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && otherPerson.getPhone().equals(getPhone())
-                && otherPerson.getTag().equals(getTag())
-                && otherPerson.getPreference().equals(getPreference())
-                && otherPerson.getOrderHistory().equals(getOrderHistory());
+                && otherPerson.getPhone().equals(getPhone());
     }
 
     /**
