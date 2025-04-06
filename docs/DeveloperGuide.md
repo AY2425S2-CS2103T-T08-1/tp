@@ -184,6 +184,16 @@ The following sequence diagram shows how a find preference operation goes throug
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Future Enhancements**
+
+### Deleting a customer's past order feature
+
+In the case where an order has been erroneously added to the past order of a particular customer, then we can use the 
+delete command to remove that order.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
@@ -227,7 +237,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `BiteBook` and the **Actor** is the `Restaurant owner`, unless specified otherwise)
 
-**Use case: Add new customers to the address book **
+**Use case: Add new customers to the address book**
 
 **MSS**
 
@@ -243,7 +253,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Bitebook shows an error message.
 
 
-**Use case: Delete customers in the address book **
+**Use case: Delete customers in the address book**
 
 **MSS**
 
@@ -265,7 +275,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Tag customers with labels (e.g., VIP, Regular, New)  **
+**Use case: Tag customers with labels (e.g., VIP, Regular, New)**
 
 **MSS**
 
