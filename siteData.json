@@ -53,6 +53,8 @@
         "implementation": "Implementation",
         "storing-a-customer-s-dietary-preference-feature": "Storing a customer's dietary preference feature",
         "finding-customers-by-dietary-preferences-feature": "Finding customers by dietary preferences feature",
+        "future-enhancements": "Future Enhancements",
+        "deleting-a-customer-s-past-order-feature": "Deleting a customer's past order feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -109,6 +111,7 @@
       "headings": {
         "bitebook-user-guide": "BiteBook User Guide",
         "quick-start": "Quick start",
+        "understanding-callout-boxes": "Understanding Callout Boxes",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
         "adding-a-customer-add": "Adding a customer: add",
