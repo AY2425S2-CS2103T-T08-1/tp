@@ -105,6 +105,7 @@ Format: `help`
 
 Adds a customer to the address book.
 
+
 Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]`
 
 > 📝 **Note**
@@ -113,10 +114,12 @@ Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]`
 > * Two people with the same name and phone number are considered duplicated. This is not allowed
 > * Phone number is at least **8 digits long**.
 
+
 > 💡 **Tip:** 
 >  
-> * A person can only have at most **1** tag
+> * A person can only have at most **1** tag and **1** preference
 > * There is no maximum phone number length.
+
 
 > ❗ **Warning**
 >
@@ -269,6 +272,7 @@ Format: `addOrder INDEX d/DISH_NAME`
 * The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
 * Only dishes with every word the same will be matched e.g. `ChickenRice` will not match `Chicken`
 * If more than one dish is provided, only the last dish will be saved.
+* Top 3 dishes ordered based on order count will be displayed. In the event of a tie that dish that appears in the top 3 first remains there until it is dethroned.
 
 Examples:
 * `list` followed by `addOrder 2 d/milo` adds `milo` to the past orders of the 2nd person in the address book.

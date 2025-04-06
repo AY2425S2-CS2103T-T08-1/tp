@@ -50,7 +50,7 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
+        phone.setText("Phone Number: " + person.getPhone().value);
         person.getTag().ifPresent(tag -> tags.getChildren().add(new Label(tag.tagName.toString())));
         String preferenceString = person.getPreference().toString();
         preference.setText("Dietary Preferences: " + preferenceString.substring(1, preferenceString.length() - 1));
