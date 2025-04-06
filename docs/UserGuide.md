@@ -44,26 +44,54 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Understanding Callout Boxes
+
+You will be encountering these various callout boxes throughout this guide. These boxes provide important information about the various commands or functions.
+
+> 📝 **Note Box**
+> 
+> Provides clarifications on a feature or command. Look out for these when you need more information about how something works.
+ 
+> 💡 **Tip Box** 
+>
+> Offers helpful tips and best practices. These help you use BiteBook more effectively.
+
+
+> ❗ **Warning Box** 
+> 
+> Highlights possible warnings or potential errors. Pay special attention to these to avoid encountering these problems.
+
+> ⚠️ **Danger Box** 
+> 
+> Indicates critical warnings or irreversible actions. Always read these carefully before proceeding.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Features
 
-**Notes about the command format:**<br>
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+> 📝 **Note**
+>
+> **Notes about the command format:**<br>
+>
+> * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-
-* Items in square brackets are optional.<br>
+>
+> * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/VIP` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[s/PREFERENCE]…​` can be used (i.e. 0 times), `s/no beef`, `s/no beef s/no pork` etc.
-
-* Parameters can be in any order.<br>
+>
+> * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+
+> 💡 **Tip**
+>
+> Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+> ❗ **Warning**
+> 
+> If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 ### Viewing help : `help`
 
@@ -77,14 +105,26 @@ Format: `help`
 
 Adds a customer to the address book.
 
-Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]…​`
+Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]`
 
-* The search is case-insensitive. e.g `Sandy` will match `sandy`
-* Two people with the same name and phone number are considered duplicated. This is not allowed
-* Phone number is at least 8 digits long.
+> 📝 **Note**
+>
+> * The search is case-insensitive. e.g `Sandy` will match `sandy`
+> * Two people with the same name and phone number are considered duplicated. This is not allowed
+> * Phone number is at least **8 digits long**.
 
-**Tip:** A person can only have at most **1** tag
+> 💡 **Tip:** 
+>  
+> * A person can only have at most **1** tag
+> * There is no maximum phone number length.
 
+> ❗ **Warning**
+>
+> * We only allow the use of alphanumeric characters in our names, 
+> so avoid using characters such as `/` or `'` in your names.
+> Use your nickname or other given names if your full legal name contains such characters.
+> * Any spaces before and after the name provided will be trimmed. 
+> However, excess spaces in between words within the name will be kept, so do be careful when inputting the names.
 
 Examples:
 * `add n/John Doe p/98765432 t/VIP s/No salt`
@@ -122,10 +162,15 @@ Deletes the specified customer from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the customer at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The index **must be a valid index (in range)** in the current list of customers.
+> 📝 **Note**
+>
+> * Deletes the customer at the specified `INDEX`.
+> * The index **must be a positive integer** 1, 2, 3, …​
+
+> ❗ **Warning**
+>
+> * The index refers to the index number shown in the displayed person list.
+> * Hence, the index **must be a valid index (in range)** in the current list of displayed customers.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
@@ -139,16 +184,27 @@ Tags a customer in the address book as VIP, Regular or New.
 
 Format: `tag INDEX t/TAG`
 
-* Tags the customer at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* Existing tags of the person will be removed and replaced by the input tag.
-* If multiple tags are provided, only the last tag will be saved.
+
+> 📝 **Note**
+>
+> * Tags the customer at the specified `INDEX`.
+> * The index **must be a positive integer** 1, 2, 3, …​
+> * Existing tags of the person will be removed and replaced by the input tag.
+> * If multiple tags are provided, only the last tag will be saved.
+ 
+> 💡 **Tip:**
+> 
+> `tag 1 t/` or `tag 1` will untag the first displayed customer.
+
+> ❗ **Warning**
+> 
+> * The full list of customers is shown after using this command.
+> * The index refers to the index number shown in the displayed person list.
+> * Hence, the index **must be a valid index (in range)** in the current list of displayed customers.
 
 Examples:
 * `list` followed by `tag 2 t/VIP` tags the 2nd person in the address book as VIP.
 * `tag 1 t/Regular t/VIP` tags the 1st person in the address book as VIP.
-* `tag 1 t/` will untag a customer.
 
 ![tag command](images/Tag.png)
 
@@ -158,7 +214,7 @@ Finds all customers that has the tag that matches
 
 Format: `findTag TAG`
 
-* Lists all customers that are tagged as `TAG`.
+* Displays all customers that are tagged as `TAG`.
 * The `TAG` must be one of the following: VIP, Regular, New.
 * The search is case-insensitive. e.g. `ReGuLaR` will match with `Regular`.
 
@@ -248,6 +304,10 @@ Examples:
 ### Clearing all entries : `clear`
 Clears all entries from the address book.
 
+> ⚠️ **Danger**
+>
+> **Deletion is irreversible!** Only use this command if you are sure that all the data is no longer needed
+
 Format: `clear`
 
 ### Exiting the program : `exit`
@@ -260,11 +320,13 @@ BiteBook data are saved automatically after any command that changes the data.
 
 ### Editing the data file
 
-BiteBook data are saved in `[JAR file location]/data/addressbook.json`.
+BiteBook data are saved in `[JAR file location]/data/BiteBook.json`.
 
-**Caution:**
-If your changes to the data file make its format invalid, BiteBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the BiteBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+
+> ⚠️ **Danger**
+>
+> * If your changes to the data file make its format invalid, BiteBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+> * Furthermore, certain edits can cause the BiteBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 
 ### Archiving data files `[coming in v2.0]`

@@ -48,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Preference preference = new Preference();
         if (argMultimap.getValue(PREFIX_PREFERENCE).isPresent()) {
-            preference = ParserUtil.parsePreference(argMultimap.getValue(PREFIX_PREFERENCE).get());
+            preference = ParserUtil.parsePreference(argMultimap.getValue(PREFIX_PREFERENCE).get().trim().toLowerCase());
         }
 
         Person person = new Person(name, phone, tag, preference);
