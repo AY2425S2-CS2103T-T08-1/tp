@@ -54,7 +54,6 @@ public class SavePreferenceCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_INVALID_INDEX);
         }
-
         if (preference.isBlank() || !Preference.isValidPreference(preference)) {
             throw new CommandException(Preference.MESSAGE_CONSTRAINTS);
         }
@@ -74,7 +73,6 @@ public class SavePreferenceCommand extends Command {
         model.setPerson(personToEdit, personToEdit);
         return new CommandResult(String.format(MESSAGE_SUCCESS, preference, Messages.format(personToEdit)));
     }
-
 
     @Override
     public boolean equals(Object other) {
