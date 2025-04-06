@@ -60,24 +60,18 @@ public class SavePreferenceCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-
-        // Normalize preference for duplicate check
         String normalizedPref = preference.trim().toLowerCase().replaceAll("\\s+", " ");
         String prefString = personToEdit.getPreference().toString(); // e.g., [no beef, no seafood]
         prefString = prefString.substring(1, prefString.length() - 1); // remove [ and ]
         List<String> currentPrefs = List.of(prefString.split(",\\s*"));
-
         boolean isDuplicate = currentPrefs.stream()
                 .map(p -> p.trim().toLowerCase().replaceAll("\\s+", " "))
                 .anyMatch(p -> p.equals(normalizedPref));
-
         if (isDuplicate) {
             throw new CommandException(MESSAGE_REPEAT_PREF);
         }
-
         personToEdit.addPreference(preference); // Add original formatting
         model.setPerson(personToEdit, personToEdit);
-
         return new CommandResult(String.format(MESSAGE_SUCCESS, preference, Messages.format(personToEdit)));
     }
 
