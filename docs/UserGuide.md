@@ -234,7 +234,7 @@ Format: `savePreference INDEX s/PREFERENCE`
 * The index **must be a positive integer** 1, 2, 3, …​
 * The dietary preference must be a non-empty string and alphanumeric.
 * The dietary preference is case-insensitive. e.g. `no seafood` will match `No SeAfoOD`
-* The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no  seafood `
+* The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no    seafood`
 * If the customer has the same dietary preference, it will not be added again.
 * If multiple dietary preferences are provided, only the last preference will be saved.
 
