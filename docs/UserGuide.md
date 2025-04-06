@@ -6,7 +6,7 @@ pageNav: 3
 
 # BiteBook User Guide
 
-BiteBook is a **desktop app for managing customer details, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BiteBook can get your customer management tasks done faster than traditional GUI apps.
+BiteBook is a **desktop app for restaurant owners to manage customer details, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BiteBook can get your customer management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -20,9 +20,9 @@ BiteBook is a **desktop app for managing customer details, optimized for use via
 
 1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T08-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for BiteBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar BiteBook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/newUi.png)
 
@@ -110,14 +110,13 @@ Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]`
 
 > 📝 **Note**
 >
-> * The search is case-insensitive. e.g `Sandy` will match `sandy`
-> * Two people with the same name and phone number are considered duplicated. This is not allowed
+> * Two people with the same name and phone number are considered duplicated. This is not allowed.
 > * Phone number is at least **8 digits long**.
 
 
 > 💡 **Tip:** 
 >  
-> * A person can only have at most **1** tag and **1** preference
+> * A person can only have at most **1** tag and **1** preference.
 > * There is no maximum phone number length.
 
 
@@ -125,7 +124,7 @@ Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]`
 >
 > * We only allow the use of alphanumeric characters in our names, 
 > so avoid using characters such as `/` or `'` in your names.
-> Use your nickname or other given names if your full legal name contains such characters.
+> Use nicknames or other given names if your full legal name contains such characters.
 > * Any spaces before and after the name provided will be trimmed. 
 > However, excess spaces in between words within the name will be kept, so do be careful when inputting the names.
 
@@ -141,7 +140,7 @@ Shows a list of all customers in the address book.
 
 Format: `list`
 
-### Locating customers by name: `find`
+### Finding customers by name: `find`
 
 Finds customers whose names contain any of the given keywords.
 
@@ -157,7 +156,7 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
-![result for 'find alex david'](images/findAlexDavidResult.png)
+![result for 'find alex david'](images/findAlexDavid.png)
 
 ### Deleting a customer : `delete`
 
@@ -181,7 +180,7 @@ Examples:
 
 ![delete command](images/DeleteCommand.png)
 
-### Tag a customer : `tag`
+### Tagging a customer : `tag`
 
 Tags a customer in the address book as VIP, Regular or New.
 
@@ -224,7 +223,7 @@ Format: `findTag TAG`
 Examples:
 * `findTag VIP` will list all customers that have been tagged `VIP`.
 
-### Store a customer's dietary preferences : `savePreference`
+### Storing a customer's dietary preferences : `savePreference`
 
 Stores a customer's dietary preferences in the address book.
 
@@ -235,7 +234,7 @@ Format: `savePreference INDEX s/PREFERENCE`
 * The index **must be a positive integer** 1, 2, 3, …​
 * The dietary preference must be a non-empty string and alphanumeric.
 * The dietary preference is case-insensitive. e.g. `no seafood` will match `No SeAfoOD`
-* The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no  seafood `
+* The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no    seafood`
 * If the customer has the same dietary preference, it will not be added again.
 * If multiple dietary preferences are provided, only the last preference will be saved.
 
@@ -257,7 +256,7 @@ Format: `findPreferences PREFERENCE`
 Examples:
 * `findPreferences no fish`
 
-### Add a customer's past orders : `addOrder`
+### Adding a customer's past orders : `addOrder`
 
 Adds an order to the customer’s order history.
 
@@ -280,7 +279,7 @@ Examples:
 
 ![add order command](images/AddOrderCommand.png)
 
-### View a customer's past orders : `viewOrders`
+### Viewing a customer's past orders : `viewOrders`
 
 Format: `viewOrders INDEX`
 
@@ -291,7 +290,7 @@ Format: `viewOrders INDEX`
 Examples:
 * `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
 
-### Locating customers by past orders: `findOrders`
+### Finding customers by past orders: `findOrders`
 
 Finds persons whose past orders contain the given keyword.
 

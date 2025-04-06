@@ -25,13 +25,13 @@
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "tag" : "VIP",
-    "preference" : "[No spicy food]",
+    "preference" : "[no spicy food]",
     "orderHistory" : { }
   }, {
     "name" : "Elle Meyer",
     "phone" : "94823224",
     "tag" : "",
-    "preference" : "[No spicy food, no beef]",
+    "preference" : "[no spicy food, no beef]",
     "orderHistory" : {
       "pizza" :  1
     }
@@ -47,7 +47,7 @@
     "name" : "George Best",
     "phone" : "94828442",
     "tag" : "",
-    "preference" : "[No spicy food, no beef]",
+    "preference" : "[no spicy food, no beef]",
     "orderHistory" : { }
   } ]
 }
