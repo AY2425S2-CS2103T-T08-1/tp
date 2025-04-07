@@ -35,7 +35,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2425S2-CS2103T-T08-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2425S2-CS2103T-T08-1/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -181,17 +181,6 @@ Step 2: The user executes `findPreferences no seafood`, causing customers who ha
 The following sequence diagram shows how a find preference operation goes through the Logic component:
 
 <puml src="diagrams/FindPreferencesDiagram.puml" alt="FindPreferencesDiagram" />
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Future Enhancements**
-
-### Deleting a customer's past order feature
-
-In the case where an order has been erroneously added to the past order of a particular customer, then we can use the 
-delete command to remove that order.
-
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -368,3 +357,16 @@ testers are expected to do more *exploratory* testing.
    2. Delete the `data` folder in the same directory as the jar file.
    3. Re-launch the app by double-clicking the jar file.
    4. Expected: The app should create a new `data` folder and a new `addressbook.json` file in it. The app should show the GUI with a set of sample contacts.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+Team size: 5
+
+1. **Make add command handle multiple preferences**: The current `add` command only supports a single preference, but a customer can have multiple preferences. We plan to modify the `add` command to accept multiple preference inputs, allowing users to specify more than one preference when adding a contact.
+2. **Allow the use of `/` and `'` in names**: The current `add` command only allows alphanumeric characters in the name field. We plan to improve this by allowing characters such as `/` and `'`, so names like `s/o John` can be properly added to BiteBook.
+3. **Normalize spacing in names**: When adding a customer details, any internal spaces in the names are not handled, so it allows `John Doe` and `John   Doe` with the same phone number can be added into BiteBook. To solve this, we plan to collapse the multiple spaces between words into a single space. For example, both `John Doe` and `John   Doe` will be stored as `John Doe` to ensure consistent formatting.
+4. **Menu Integration for Order Consistency**:To reduce variability in order entries (e.g., `milo` vs `iced milo` or `ice milo`), a fixed menu system will be implemented. This menu will contain standardized food and drink items that customers can select from when placing an order. The saveOrder function will be updated to only allow selections from this predefined menu, improving data consistency and enabling better analytics.
+5. **Editable Tag System for Customer Categorization**: Currently, customer tags may be too rigid or inconsistent. To offer more flexibility, restaurant owners will be able to edit and manage the fixed list of available tags (e.g., `VIP`, `Vegetarian`, `Allergy-prone`). This ensures the tags remain relevant to the restaurant’s evolving customer base and operational needs, while still enforcing consistency in their application.
+
