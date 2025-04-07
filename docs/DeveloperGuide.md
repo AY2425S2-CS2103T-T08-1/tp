@@ -241,6 +241,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1a1. Bitebook shows an error message.
 
+    Use case ends.
 
 **Use case: Delete customers in the address book**
 
@@ -284,11 +285,154 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2a1. Bitebook shows an error message.
 
+    Use case ends.
+
 * 2b. The tag is invalid/
 
     * 2b1. Bitebook shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: Add orders for customer**
+
+**MSS**
+
+1.  User list all customers
+2.  User enters into the command line (addOrder 1 d/Fish soup)
+3.  fish soup appears in the top 3 dishes
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+    * 2a1. Bitebook shows an error message.
+
+    Use case ends.
+
+* 2b. The dish already exists in the customer's past orders
+
+    * 2b1. If the top 3 dishes have a higher count than fish soup, then fish soup does not appear
+    
+     Use case ends.
+
+    * 2b2. fish soup 
+
+     Use case resumes at step 2.
+
+* 3a. No prefix (/d) is added
+
+    * 3a1. Bitebook shows an error message.
+
+    Use case ends.
+
+**Use case: Find all customers with a certain preference**
+
+**MSS**
+
+1.  User enters a valid findPreferences command (findPreferences No seafood)
+2.  Lists all customers matching the preference 
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. No customers have the given preference
+
+    * 2a1. Shows "0 persons listed!"
+
+    Use case ends.
+
+* 3a. No preferences provided
+
+    * 3a1. Bitebook shows an error message.
+
+    Use case ends.
+
+**Use case: Find all customers with a certain order**
+
+**MSS**
+
+1.  User enters a valid findOrders command (findOrders d/Fish soup)
+2.  Lists all customers with the order
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. No customers have the given dish
+
+    * 2a1. Shows "0 persons listed!"
+
+  Use case ends.
+
+* 3a. NNo prefix (/d) is added
+
+    * 3a1. Bitebook shows an error message.
+
+  Use case ends.
+
+**Use case: Save preference for a customer**
+
+**MSS**
+
+1.  User enters a valid savePreference command (savePreference 1 s/no salt)
+2.  The first contact information preference is saved as no salt
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+    * 2a1. Bitebook shows an error message.
+
+    Use case ends.
+
+* 3a. No prefix (/s) is added
+
+    * 3a1. Bitebook shows an error message.
+
+    Use case ends.
+
+* 4a. There is an existing preference saved for the customer
+
+    * 4a1. The existing preference becomes the new preference 
+
+    Use case ends.
+
+**Use case: Clear all contact**
+
+**MSS**
+
+1.  User enters a valid clear command (clear)
+
+Use case ends.
+
+**Use case: exit**
+
+**MSS**
+
+1.  User enters a valid exit command (exit)
+
+Use case ends.
 
 ### Non-Functional Requirements
 
