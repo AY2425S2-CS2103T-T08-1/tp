@@ -8,7 +8,7 @@
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
 [![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
 
-![Ui](images/newUi.png)
+![Ui](images/Ui.png)
 
 BiteBook is a powerful desktop application designed to help restaurant owners keep 
 track of customer details, enhancing both service quality and customer relationships. 
