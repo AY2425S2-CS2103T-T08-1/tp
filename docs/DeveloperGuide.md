@@ -211,16 +211,16 @@ The following sequence diagram shows how a find preference operation goes throug
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​          | I want to …​                                                                         | So that I can…​                                  |
-|----------|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------|
-| `* * *`  | Restaurant owner | add new customers to the address book                                                | keep track of their contact details              |
-| `* * *`  | Restaurant owner | delete customer records                                                              | remove outdated or incorrect information         |
-| `* * *`  | Restaurant owner | tag customers with labels (e.g., VIP, Regular, New)                                  | personalize their experience                     |
-| `* * *`  | Restaurant owner | store customer preferences and allergies                                             | provide a personalized dining experience.        |
-| `* *`    | Restaurant owner | customer feedback and complaints                                                     | improve my restaurant’s service                  |
-| `* *`    | Restaurant owner | see a customer’s past orders                                                         | recommend seasonal dishes they might enjoy       |
-| `* *`    | Restaurant owner | group customers by dining preferences (e.g., vegetarian, wine lovers, family diners) | offer them relevant recommendations              |
-| `* *`    | Restaurant owner | track customer satisfaction scores based on their feedback                           | improve my service.                              |
+| Priority | As a …​          | I want to …​                                                                         | So that I can…​                            |
+|----------|------------------|--------------------------------------------------------------------------------------|--------------------------------------------|
+| `* * *`  | Restaurant owner | add new customers to the address book                                                | keep track of their contact details        |
+| `* * *`  | Restaurant owner | delete customer records                                                              | remove outdated or incorrect information   |
+| `* * *`  | Restaurant owner | tag customers with labels (e.g., VIP, Regular, New)                                  | personalize their experience               |
+| `* * *`  | Restaurant owner | store customer preferences and allergies                                             | provide a personalized dining experience.  |
+| `* *`    | Restaurant owner | customer feedback and complaints (To add in the future)                              | improve my restaurant’s service            |
+| `* *`    | Restaurant owner | see a customer’s past orders (To add in the future)                                  | recommend seasonal dishes they might enjoy |
+| `* *`    | Restaurant owner | group customers by dining preferences (e.g., vegetarian, wine lovers, family diners) | offer them relevant recommendations        |
+| `* *`    | Restaurant owner | track customer satisfaction scores based on their feedback (To add in the future)    | improve my service.                        |
 
 ### Use cases
 
@@ -604,4 +604,3 @@ Team size: 5
 3. **Normalize spacing in names**: When adding a customer details, any internal spaces in the names are not handled, so it allows `John Doe` and `John   Doe` with the same phone number can be added into BiteBook. To solve this, we plan to collapse the multiple spaces between words into a single space. For example, both `John Doe` and `John   Doe` will be stored as `John Doe` to ensure consistent formatting.
 4. **Menu Integration for Order Consistency**:To reduce variability in order entries (e.g., `milo` vs `iced milo` or `ice milo`), a fixed menu system will be implemented. This menu will contain standardized food and drink items that customers can select from when placing an order. The saveOrder function will be updated to only allow selections from this predefined menu, improving data consistency and enabling better analytics.
 5. **Editable Tag System for Customer Categorization**: Currently, customer tags may be too rigid or inconsistent. To offer more flexibility, restaurant owners will be able to edit and manage the fixed list of available tags (e.g., `VIP`, `Vegetarian`, `Allergy-prone`). This ensures the tags remain relevant to the restaurant’s evolving customer base and operational needs, while still enforcing consistency in their application.
-
