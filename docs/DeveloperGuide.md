@@ -211,16 +211,16 @@ The following sequence diagram shows how a find preference operation goes throug
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​          | I want to …​                                                                         | So that I can…​                                  |
-|----------|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------|
-| `* * *`  | Restaurant owner | add new customers to the address book                                                | keep track of their contact details              |
-| `* * *`  | Restaurant owner | delete customer records                                                              | remove outdated or incorrect information         |
-| `* * *`  | Restaurant owner | tag customers with labels (e.g., VIP, Regular, New)                                  | personalize their experience                     |
-| `* * *`  | Restaurant owner | store customer preferences and allergies                                             | provide a personalized dining experience.        |
-| `* *`    | Restaurant owner | customer feedback and complaints                                                     | improve my restaurant’s service                  |
-| `* *`    | Restaurant owner | see a customer’s past orders                                                         | recommend seasonal dishes they might enjoy       |
-| `* *`    | Restaurant owner | group customers by dining preferences (e.g., vegetarian, wine lovers, family diners) | offer them relevant recommendations              |
-| `* *`    | Restaurant owner | track customer satisfaction scores based on their feedback                           | improve my service.                              |
+| Priority | As a …​          | I want to …​                                                                         | So that I can…​                            |
+|----------|------------------|--------------------------------------------------------------------------------------|--------------------------------------------|
+| `* * *`  | Restaurant owner | add new customers to the address book                                                | keep track of their contact details        |
+| `* * *`  | Restaurant owner | delete customer records                                                              | remove outdated or incorrect information   |
+| `* * *`  | Restaurant owner | tag customers with labels (e.g., VIP, Regular, New)                                  | personalize their experience               |
+| `* * *`  | Restaurant owner | store customer preferences and allergies                                             | provide a personalized dining experience.  |
+| `* *`    | Restaurant owner | customer feedback and complaints (To add in the future)                              | improve my restaurant’s service            |
+| `* *`    | Restaurant owner | see a customer’s past orders (To add in the future)                                  | recommend seasonal dishes they might enjoy |
+| `* *`    | Restaurant owner | group customers by dining preferences (e.g., vegetarian, wine lovers, family diners) | offer them relevant recommendations        |
+| `* *`    | Restaurant owner | track customer satisfaction scores based on their feedback (To add in the future)    | improve my service.                        |
 
 ### Use cases
 
@@ -241,6 +241,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1a1. Bitebook shows an error message.
 
+    Use case ends.
 
 **Use case: Delete customers in the address book**
 
@@ -289,6 +290,147 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2b1. Bitebook shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: Add orders for customer**
+
+**MSS**
+
+1.  User list all customers
+2.  User enters into the command line (addOrder 1 d/Fish soup)
+3.  fish soup appears in the top 3 dishes
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+    * 2a1. Bitebook shows an error message.
+
+    Use case ends.
+
+* 2b. The dish already exists in the customer's past orders
+
+    * 2b1. If the top 3 dishes have a higher count than fish soup, then fish soup does not appear
+    
+     Use case ends.
+
+    * 2b2. fish soup 
+
+     Use case resumes at step 2.
+
+* 3a. No prefix (/d) is added
+
+    * 3a1. Bitebook shows an error message.
+
+    Use case ends.
+
+**Use case: Find all customers with a certain preference**
+
+**MSS**
+
+1.  User enters a valid findPreferences command (findPreferences No seafood)
+2.  Lists all customers matching the preference 
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. No customers have the given preference
+
+    * 2a1. Shows "0 persons listed!"
+
+    Use case ends.
+
+* 3a. No preferences provided
+
+    * 3a1. Bitebook shows an error message.
+
+    Use case ends.
+
+**Use case: Find all customers with a certain order**
+
+**MSS**
+
+1.  User enters a valid findOrders command (findOrders d/Fish soup)
+2.  Lists all customers with the order
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. No customers have the given dish
+
+    * 2a1. Shows "0 persons listed!"
+
+  Use case ends.
+
+* 3a. NNo prefix (/d) is added
+
+    * 3a1. Bitebook shows an error message.
+
+  Use case ends.
+
+**Use case: Save preference for a customer**
+
+**MSS**
+
+1.  User enters a valid savePreference command (savePreference 1 s/no salt)
+2.  The first contact information preference is saved as no salt
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+    * 2a1. Bitebook shows an error message.
+
+    Use case ends.
+
+* 3a. No prefix (/s) is added
+
+    * 3a1. Bitebook shows an error message.
+
+    Use case ends.
+
+* 4a. There is an existing preference saved for the customer
+
+    * 4a1. The existing preference becomes the new preference 
+
+    Use case ends.
+
+**Use case: Clear all contact**
+
+**MSS**
+
+1.  User enters a valid clear command (clear)
+
+Use case ends.
+
+**Use case: exit**
+
+**MSS**
+
+1.  User enters a valid exit command (exit)
+
+Use case ends.
 
 ### Non-Functional Requirements
 
@@ -465,3 +607,4 @@ Team size: 5
 8. **Support Deletion of Customer Preferences**: Similar to the "Delete Order" functionality, we do not currently have an option to delete individual preferences. To remove preferences, we must delete and re-enter the entire customer record. We aim to introduce a more granular approach to allow for the deletion of preferences independently.
 9. **Expand Categories of Customer Tags**: Currently, the tags available in our system are limited to customer status, such as "VIP," "Regular," and "New." We plan to expand the tagging system to include a broader variety of tags, such as those related to customer preferences, enabling better categorization and segmentation.
 10. **Improve Efficiency of Filtered List Operations**: When performing filter operations like `findOrders` or `findPreferences`, the system currently returns the full list of results after a tag command is applied, instead of staying within the filtered list. This behavior reduces the efficiency of filtering and can lead to unnecessary data being returned. We plan to fix this so that filtered lists remain intact after applying tags.
+
