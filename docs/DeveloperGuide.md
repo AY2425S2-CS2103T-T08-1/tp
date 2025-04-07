@@ -230,7 +230,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User enters into the command line (ADD Tom 123456789)
+1.  User enters into the command line (add n/Tom p/123456789)
 2.  The contact information is added into the address book with a success text
 
     Use case ends.
@@ -247,7 +247,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User list all customers
-2.  User enters into the command line (DELETE 1)
+2.  User enters into the command line (delete 1)
 3.  The first contact information is deleted
 
     Use case ends.
@@ -269,7 +269,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User list all customers
-2.  User enters into the command line (TAG 1 VIP)
+2.  User enters into the command line (tag 1 t/VIP)
 3.  The first contact information is tagged with VIP
 
     Use case ends.
@@ -334,20 +334,111 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-### Deleting a person
 
-1. Deleting a person while all persons are being shown
+---
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+###  1. Add a New Customer
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+Add a customer named Alice with preferences and a tag:  
+`add n/Alice Tan p/91234567 t/Regular s/no seafood`
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+---
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+###  2. Tag a Customer
+
+Tag the customer with:  
+`tag 1 t/NEW`
+
+Test:
+- Overwriting existing tag
+- Clearing tag with:  
+  `tag 1 t/`
+
+---
+
+### 3. Save Preferences
+
+Add dietary preferences:  
+`savePreference 1 s/no dairy`  
+`savePreference 1 s/no seafood`
+
+Test:
+- Duplicate prevention:  
+  `savePreference 1 s/no dairy`
+
+---
+
+###  4. Add Past Orders
+
+Add multiple dishes (with variations in spacing and case):  
+`addOrder 1 d/Chicken Rice`  
+`addOrder 1 d/iced milo`  
+`addOrder 1 d/Iced Milo`  
+`addOrder 1 d/Nasi Lemak`  
+`addOrder 1 d/Nasi Lemak`
+
+Test:
+- Frequency sorting in UI top 3
+- Normalization (case & spacing)
+
+---
+
+###  5. View Past Orders
+
+View the customer’s order history:  
+`viewOrders 1`
+
+Check that:
+- Orders are displayed
+- Most frequent ones appear in top 3 dishes
+
+---
+
+###  6. Find by Preferences
+
+Search by dietary preferences:  
+`findPreferences no seafood`  
+`findPreferences no dairy`
+
+---
+
+###  7. Find by Order History
+
+Search by past orders:  
+`findOrders nasi lemak`  
+`findOrders iced milo`
+
+---
+
+###  8. Find by Name / Tag
+
+Search by name:  
+`find alice`  
+Search by tag:  
+`findTag VIP`
+
+---
+
+###  9. Delete Customer
+
+Delete the customer from the list:  
+`delete 1`
+
+Ensure:
+- Person is removed
+- Indexes shift appropriately
+
+---
+
+###  10. Clear All Entries
+
+Reset the app to empty state:  
+`clear`
+
+Ensure:
+- No customers remain
+- App behaves normally post-clear
+
 
 ### Saving data
 

@@ -91,7 +91,8 @@ You will be encountering these various callout boxes throughout this guide. Thes
 
 > ❗ **Warning**
 > 
-> If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+> * For any commands that require the`INDEX` parameter, note that this `INDEX` refers to the index number shown in the **displayed person list**.
+> * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 ### Viewing help : `help`
 
@@ -114,7 +115,7 @@ Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]`
 > * Phone number is at least **8 digits long**.
 
 
-> 💡 **Tip:**
+> 💡 **Tip**
 > 
 > * A person can only have at most **1** tag and **1** preference.
 > * There is no maximum phone number length.
@@ -132,7 +133,7 @@ Examples:
 * `add n/John Doe p/98765432 t/VIP s/No salt`
 * `add n/John Doe t/VIP p/98765432 s/No salt`
 
-![add command](images/AddCommand.png)
+![add command](images/Add_Command.png)
 
 ### Listing all customers : `list`
 
@@ -157,7 +158,7 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
-![result for 'find alex david'](images/findAlexDavid.png)
+![result for 'find alex david'](images/List_Command.png)
 
 ### Deleting a customer : `delete`
 
@@ -179,7 +180,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-![delete command](images/DeleteCommand.png)
+![delete command](images/Delete_Command.png)
 
 ### Tagging a customer : `tag`
 
@@ -195,21 +196,21 @@ Format: `tag INDEX t/TAG`
 > * Existing tags of the person will be removed and replaced by the input tag.
 > * If multiple tags are provided, only the last tag will be saved.
  
-> 💡 **Tip:**
+> 💡 **Tip**
 > 
 > `tag 1 t/` or `tag 1` will untag the first displayed customer.
 
 > ❗ **Warning**
-> 
-> * The full list of customers is shown after using this command.
+>
 > * The index refers to the index number shown in the displayed person list.
+> * The full list of customers is shown after using this command.
 > * Hence, the index **must be a valid index (in range)** in the current list of displayed customers.
 
 Examples:
-* `list` followed by `tag 2 t/VIP` tags the 2nd person in the address book as VIP.
+* `list` followed by `tag 4 t/VIP` tags the 4th person in the address book as VIP.
 * `tag 1 t/Regular t/VIP` tags the 1st person in the address book as VIP.
 
-![tag command](images/Tag.png)
+![tag command](images/Tag_Command.png)
 
 ### Finding customers by tag : `findTag`
 
@@ -225,6 +226,8 @@ Format: `findTag TAG`
 Examples:
 * `findTag VIP` will list all customers that have been tagged `VIP`.
 
+![findTag command](images/findTag.png)
+
 ### Storing a customer's dietary preferences : `savePreference`
 
 Stores a customer's dietary preferences in the address book.
@@ -233,21 +236,23 @@ Format: `savePreference INDEX s/PREFERENCE`
 
 > 📝 **Note**
 > * Stores the dietary preference of the person at the specified `INDEX`.
-> * The index refers to the index number shown in the displayed person list.
 > * The index **must be a positive integer** 1, 2, 3, …​
 > * The dietary preference must be a non-empty string and alphanumeric.
 
-> 💡 **Tip:**
+> 💡 **Tip**
 > * The dietary preference is case-insensitive. e.g. `No SeAfoOD` will match `no seafood`
 > * If multiple dietary preferences are provided, only the last preference will be saved.
 
 > ❗ **Warning**
+> * The index refers to the index number shown in the displayed person list.
 > * The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no    seafood`
 > * If the customer has the same dietary preference, it will not be added again.
 
 Examples:
 * `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
 * `savePreference 1 s/no beef s/no fish` will only save "no fish" to the customer.
+
+![savePreference command](images/SavePreference.png)
 
 ### Finding customers by dietary preferences : `findPreferences`
 
@@ -259,14 +264,19 @@ Format: `findPreferences PREFERENCE`
 > * Lists all customers that have `PREFERENCE` saved as their dietary preference.
 > * Only dietary preferences are searched.
 
-> 💡 **Tip:**
+> 💡 **Tip**
+> 
 > The search is case-insensitive. e.g. `No SeAfoOD` will match `no seafood`
 
 > ❗ **Warning**
-> The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or `no  seafood `
+> 
+>  The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or with extra spaces like `no seafood`.
+
 
 Examples:
-* `findPreferences no fish`
+* `findPreferences no alcohol`
+
+![findPreference command](images/findPreferences.png)
 
 ### Adding a customer's past orders : `addOrder`
 
@@ -274,18 +284,21 @@ Adds an order to the customer’s order history.
 
 Format: `addOrder INDEX d/DISH_NAME`
 
-> 📝 **Note**
+> 📝 **Note** 
+> 
 > * Adds the order to the person at the specified `INDEX`.
 > * The index **must be a positive integer** 1, 2, 3, …​
 > * The order **must be a non-empty string**.
 > * The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
 
-> 💡 **Tip:**
+> 💡 **Tip**
+> 
 > * The order is case-insensitive. e.g. `milo` will match `Milo`
 > * Top 3 dishes ordered based on order count will be displayed. In the event of a tie that dish that appears in the top 3 first remains there until it is dethroned.
 > * If more than one dish is provided, only the last dish will be saved.
 
 > ❗ **Warning**
+> 
 > * The index refers to the index number shown in the displayed person list.
 > * The order is space-sensitive, except for multiple spaces. e.g. `Chicken Rice` will not match 'ChickenRice' but will match ` Chicken     Rice `
 > * Only dishes with every word the same will be matched e.g. `ChickenRice` will not match `Chicken`
@@ -294,7 +307,7 @@ Examples:
 * `list` followed by `addOrder 2 d/milo` adds `milo` to the past orders of the 2nd person in the address book.
 * `addOrder 1 d/Iced Milo d/Chicken Rice` adds `Chicken Rice` to the past orders of the 1st person in the address book.
 
-![add order command](images/AddOrderCommand.png)
+![add order command](images/AddOrder.png)
 
 ### Viewing a customer's past orders : `viewOrders`
 
@@ -305,10 +318,13 @@ Format: `viewOrders INDEX`
 > * The index **must be a positive integer** 1, 2, 3, …​
 
 > ❗ **Warning**
-> * The index refers to the index number shown in the displayed person list.
+> 
+> The index refers to the index number shown in the displayed person list.
 
 Examples:
-* `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
+* `list` followed by `viewOrders 1` views the past orders of the 1st person in the address book.
+
+![view order command](images/viewOrders.png)
 
 ### Finding customers by past orders: `findOrders`
 
@@ -325,6 +341,7 @@ Format: `findOrders KEYWORD`
 Examples:
 * `find milo` returns `John` and `Alice` who both ordered `milo`
 
+![find order command](images/findOrders.png)
 ### Clearing all entries : `clear`
 Clears all entries from the address book.
 
