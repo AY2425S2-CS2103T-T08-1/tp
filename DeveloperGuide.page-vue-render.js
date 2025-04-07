@@ -191,7 +191,7 @@ with(this){return _c('p',[_c('strong',[_v("Use case: Add new customers to the ad
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User enters into the command line (ADD Tom 123456789)")])]),_v(" "),_c('li',[_c('p',[_v("The contact information is added into the address book with a success text")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User enters into the command line (add n/Tom p/123456789)")])]),_v(" "),_c('li',[_c('p',[_v("The contact information is added into the address book with a success text")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
@@ -206,7 +206,7 @@ with(this){return _c('p',[_c('strong',[_v("Use case: Delete customers in the add
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User list all customers")])]),_v(" "),_c('li',[_c('p',[_v("User enters into the command line (DELETE 1)")])]),_v(" "),_c('li',[_c('p',[_v("The first contact information is deleted")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User list all customers")])]),_v(" "),_c('li',[_c('p',[_v("User enters into the command line (delete 1)")])]),_v(" "),_c('li',[_c('p',[_v("The first contact information is deleted")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
@@ -221,7 +221,7 @@ with(this){return _c('p',[_c('strong',[_v("Use case: Tag customers with labels (
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User list all customers")])]),_v(" "),_c('li',[_c('p',[_v("User enters into the command line (TAG 1 VIP)")])]),_v(" "),_c('li',[_c('p',[_v("The first contact information is tagged with VIP")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User list all customers")])]),_v(" "),_c('li',[_c('p',[_v("User enters into the command line (tag 1 t/VIP)")])]),_v(" "),_c('li',[_c('p',[_v("The first contact information is tagged with VIP")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
@@ -263,6 +263,6 @@ with(this){return _c('h3',{attrs:{"id":"saving-data"}},[_v("Saving data"),_c('a'
 with(this){return _c('ol',[_c('li',[_c('p',[_v("Dealing with missing/corrupted data files")]),_v(" "),_c('ol',[_c('li',[_v("Prerequisites: Executed the BiteBook jar file.")]),_v(" "),_c('li',[_v("Delete the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("data")]),_v(" folder in the same directory as the jar file.")]),_v(" "),_c('li',[_v("Re-launch the app by double-clicking the jar file.")]),_v(" "),_c('li',[_v("Expected: The app should create a new "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("data")]),_v(" folder and a new "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addressbook.json")]),_v(" file in it. The app should show the GUI with a set of sample contacts.")])])])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 7 Apr 2025, 21:28:09 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 7 Apr 2025, 22:15:57 GMT+8]")])])])}
 }];
   
