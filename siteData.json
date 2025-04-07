@@ -64,7 +64,16 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
+        "1-add-a-new-customer": "1. Add a New Customer",
+        "2-tag-a-customer": "2. Tag a Customer",
+        "3-save-preferences": "3. Save Preferences",
+        "4-add-past-orders": "4. Add Past Orders",
+        "5-view-past-orders": "5. View Past Orders",
+        "6-find-by-preferences": "6. Find by Preferences",
+        "7-find-by-order-history": "7. Find by Order History",
+        "8-find-by-name-tag": "8. Find by Name / Tag",
+        "9-delete-customer": "9. Delete Customer",
+        "10-clear-all-entries": "10. Clear All Entries",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}
