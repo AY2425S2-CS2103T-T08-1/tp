@@ -245,7 +245,7 @@ Format: `savePreference INDEX s/PREFERENCE`
 
 > ❗ **Warning**
 > * The index refers to the index number shown in the displayed person list.
-> * The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no    seafood`
+> * The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no   seafood`
 > * If the customer has the same dietary preference, it will not be added again.
 
 Examples:
@@ -270,7 +270,7 @@ Format: `findPreferences PREFERENCE`
 
 > ❗ **Warning**
 > 
->  The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or with extra spaces like `no seafood`.
+>  The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or with extra spaces like `no   seafood`.
 
 
 Examples:
