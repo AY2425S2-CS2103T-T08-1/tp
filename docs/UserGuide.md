@@ -132,7 +132,7 @@ Examples:
 * `add n/John Doe p/98765432 t/VIP s/No salt`
 * `add n/John Doe t/VIP p/98765432 s/No salt`
 
-![add command](images/AddCommand.png)
+![add command](images/Add_Command.png)
 
 ### Listing all customers : `list`
 
@@ -157,7 +157,7 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
-![result for 'find alex david'](images/findAlexDavid.png)
+![result for 'find alex david'](images/List_Command.png)
 
 ### Deleting a customer : `delete`
 
@@ -179,7 +179,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-![delete command](images/DeleteCommand.png)
+![delete command](images/Delete_Command.png)
 
 ### Tagging a customer : `tag`
 
@@ -206,10 +206,10 @@ Format: `tag INDEX t/TAG`
 > * Hence, the index **must be a valid index (in range)** in the current list of displayed customers.
 
 Examples:
-* `list` followed by `tag 2 t/VIP` tags the 2nd person in the address book as VIP.
+* `list` followed by `tag 4 t/VIP` tags the 4th person in the address book as VIP.
 * `tag 1 t/Regular t/VIP` tags the 1st person in the address book as VIP.
 
-![tag command](images/Tag.png)
+![tag command](images/Tag_Command.png)
 
 ### Finding customers by tag : `findTag`
 
@@ -224,6 +224,8 @@ Format: `findTag TAG`
 
 Examples:
 * `findTag VIP` will list all customers that have been tagged `VIP`.
+
+![findTag command](images/findTag.png)
 
 ### Storing a customer's dietary preferences : `savePreference`
 
@@ -249,6 +251,8 @@ Examples:
 * `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
 * `savePreference 1 s/no beef s/no fish` will only save "no fish" to the customer.
 
+![savePreference command](images/SavePreference.png)
+
 ### Finding customers by dietary preferences : `findPreferences`
 
 Finds all customers that has a preference that matches
@@ -266,7 +270,9 @@ Format: `findPreferences PREFERENCE`
 > The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or `no  seafood `
 
 Examples:
-* `findPreferences no fish`
+* `findPreferences no alcohol`
+
+![findPreference command](images/findPreferences.png)
 
 ### Adding a customer's past orders : `addOrder`
 
@@ -294,7 +300,7 @@ Examples:
 * `list` followed by `addOrder 2 d/milo` adds `milo` to the past orders of the 2nd person in the address book.
 * `addOrder 1 d/Iced Milo d/Chicken Rice` adds `Chicken Rice` to the past orders of the 1st person in the address book.
 
-![add order command](images/AddOrderCommand.png)
+![add order command](images/AddOrderCommans.png)
 
 ### Viewing a customer's past orders : `viewOrders`
 
@@ -308,7 +314,9 @@ Format: `viewOrders INDEX`
 > * The index refers to the index number shown in the displayed person list.
 
 Examples:
-* `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
+* `list` followed by `viewOrders 1` views the past orders of the 1st person in the address book.
+
+![view order command](images/viewOrders.png)
 
 ### Finding customers by past orders: `findOrders`
 
@@ -325,6 +333,7 @@ Format: `findOrders KEYWORD`
 Examples:
 * `find milo` returns `John` and `Alice` who both ordered `milo`
 
+![find order command](images/findOrders.png)
 ### Clearing all entries : `clear`
 Clears all entries from the address book.
 
