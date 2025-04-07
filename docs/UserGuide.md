@@ -91,7 +91,8 @@ You will be encountering these various callout boxes throughout this guide. Thes
 
 > ❗ **Warning**
 > 
-> If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+> * For any commands that require the`INDEX` parameter, note that this `INDEX` refers to the index number shown in the **displayed person list**.
+> * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 ### Viewing help : `help`
 
@@ -200,9 +201,9 @@ Format: `tag INDEX t/TAG`
 > `tag 1 t/` or `tag 1` will untag the first displayed customer.
 
 > ❗ **Warning**
-> 
-> * The full list of customers is shown after using this command.
+>
 > * The index refers to the index number shown in the displayed person list.
+> * The full list of customers is shown after using this command.
 > * Hence, the index **must be a valid index (in range)** in the current list of displayed customers.
 
 Examples:
@@ -233,7 +234,6 @@ Format: `savePreference INDEX s/PREFERENCE`
 
 > 📝 **Note**
 > * Stores the dietary preference of the person at the specified `INDEX`.
-> * The index refers to the index number shown in the displayed person list.
 > * The index **must be a positive integer** 1, 2, 3, …​
 > * The dietary preference must be a non-empty string and alphanumeric.
 
@@ -242,6 +242,7 @@ Format: `savePreference INDEX s/PREFERENCE`
 > * If multiple dietary preferences are provided, only the last preference will be saved.
 
 > ❗ **Warning**
+> * The index refers to the index number shown in the displayed person list.
 > * The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no    seafood`
 > * If the customer has the same dietary preference, it will not be added again.
 
