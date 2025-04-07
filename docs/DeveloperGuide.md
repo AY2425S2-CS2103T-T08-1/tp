@@ -285,6 +285,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2a1. Bitebook shows an error message.
 
+    Use case ends.
+
 * 2b. The tag is invalid.
 
     * 2b1. Bitebook shows an error message.
