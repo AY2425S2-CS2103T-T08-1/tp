@@ -241,7 +241,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User enters into the command line (ADD Tom 123456789)
+1.  User enters into the command line (add n/Tom p/123456789)
 2.  The contact information is added into the address book with a success text
 
     Use case ends.
@@ -258,7 +258,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User list all customers
-2.  User enters into the command line (DELETE 1)
+2.  User enters into the command line (delete 1)
 3.  The first contact information is deleted
 
     Use case ends.
@@ -280,7 +280,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User list all customers
-2.  User enters into the command line (TAG 1 VIP)
+2.  User enters into the command line (tag 1 t/VIP)
 3.  The first contact information is tagged with VIP
 
     Use case ends.
