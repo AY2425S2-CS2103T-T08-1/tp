@@ -114,8 +114,8 @@ Format (In any order): `add n/NAME p/PHONE_NUMBER [t/TAG] [s/PREFERENCE]`
 > * Phone number is at least **8 digits long**.
 
 
-> 💡 **Tip:** 
->  
+> 💡 **Tip:**
+> 
 > * A person can only have at most **1** tag and **1** preference.
 > * There is no maximum phone number length.
 
@@ -146,11 +146,12 @@ Finds customers whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+> 📝 **Note**
+> * The search is case-insensitive. e.g `hans` will match `Hans`
+> * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+> * Only the name is searched.
+> * Only full words will be matched e.g. `Han` will not match `Hans`
+> * Persons matching at least one keyword will be returned (i.e. `OR` search).
 
 Examples:
 * `find John` returns `john` and `John Doe`
@@ -216,9 +217,10 @@ Finds all customers that has the tag that matches
 
 Format: `findTag TAG`
 
-* Displays all customers that are tagged as `TAG`.
-* The `TAG` must be one of the following: VIP, Regular, New.
-* The search is case-insensitive. e.g. `ReGuLaR` will match with `Regular`.
+> 📝 **Note**
+> * Displays all customers that are tagged as `TAG`.
+> * The `TAG` must be one of the following: VIP, Regular, New.
+> * The search is case-insensitive. e.g. `ReGuLaR` will match with `Regular`.
 
 Examples:
 * `findTag VIP` will list all customers that have been tagged `VIP`.
@@ -229,14 +231,19 @@ Stores a customer's dietary preferences in the address book.
 
 Format: `savePreference INDEX s/PREFERENCE`
 
-* Stores the dietary preference of the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The dietary preference must be a non-empty string and alphanumeric.
-* The dietary preference is case-insensitive. e.g. `no seafood` will match `No SeAfoOD`
-* The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no    seafood`
-* If the customer has the same dietary preference, it will not be added again.
-* If multiple dietary preferences are provided, only the last preference will be saved.
+> 📝 **Note**
+> * Stores the dietary preference of the person at the specified `INDEX`.
+> * The index refers to the index number shown in the displayed person list.
+> * The index **must be a positive integer** 1, 2, 3, …​
+> * The dietary preference must be a non-empty string and alphanumeric.
+
+> 💡 **Tip:**
+> * The dietary preference is case-insensitive. e.g. `No SeAfoOD` will match `no seafood`
+> * If multiple dietary preferences are provided, only the last preference will be saved.
+
+> ❗ **Warning**
+> * The dietary preference is space-sensitive. e.g. `no seafood` will not match `noseafood` or `no    seafood`
+> * If the customer has the same dietary preference, it will not be added again.
 
 Examples:
 * `list` followed by `savePreference 2 s/no beef` stores the dietary preference of the 2nd person in the address book as `no beef`.
@@ -248,10 +255,15 @@ Finds all customers that has a preference that matches
 
 Format: `findPreferences PREFERENCE`
 
-* Lists all customers that have `PREFERENCE` saved as their dietary preference.
-* The search is case-insensitive. e.g. `no seafood` will match with `No SeAfoOD`
-* The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or `no  seafood `
-* Only dietary preferences are searched.
+> 📝 **Note**
+> * Lists all customers that have `PREFERENCE` saved as their dietary preference.
+> * Only dietary preferences are searched.
+
+> 💡 **Tip:**
+> The search is case-insensitive. e.g. `No SeAfoOD` will match `no seafood`
+
+> ❗ **Warning**
+> The search is space-sensitive. e.g. `no seafood` will not match with `noseafood` or `no  seafood `
 
 Examples:
 * `findPreferences no fish`
@@ -262,16 +274,21 @@ Adds an order to the customer’s order history.
 
 Format: `addOrder INDEX d/DISH_NAME`
 
-* Adds the order to the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The order **must be a non-empty string**.
-* The order is case-insensitive. e.g. `milo` will match `Milo`
-* The order is space-sensitive, except for multiple spaces. e.g. `Chicken Rice` will not match 'ChickenRice' but will match ` Chicken     Rice `
-* The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
-* Only dishes with every word the same will be matched e.g. `ChickenRice` will not match `Chicken`
-* If more than one dish is provided, only the last dish will be saved.
-* Top 3 dishes ordered based on order count will be displayed. In the event of a tie that dish that appears in the top 3 first remains there until it is dethroned.
+> 📝 **Note**
+> * Adds the order to the person at the specified `INDEX`.
+> * The index **must be a positive integer** 1, 2, 3, …​
+> * The order **must be a non-empty string**.
+> * The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
+
+> 💡 **Tip:**
+> * The order is case-insensitive. e.g. `milo` will match `Milo`
+> * Top 3 dishes ordered based on order count will be displayed. In the event of a tie that dish that appears in the top 3 first remains there until it is dethroned.
+> * If more than one dish is provided, only the last dish will be saved.
+
+> ❗ **Warning**
+> * The index refers to the index number shown in the displayed person list.
+> * The order is space-sensitive, except for multiple spaces. e.g. `Chicken Rice` will not match 'ChickenRice' but will match ` Chicken     Rice `
+> * Only dishes with every word the same will be matched e.g. `ChickenRice` will not match `Chicken`
 
 Examples:
 * `list` followed by `addOrder 2 d/milo` adds `milo` to the past orders of the 2nd person in the address book.
@@ -283,9 +300,12 @@ Examples:
 
 Format: `viewOrders INDEX`
 
-* Views the past orders of the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+> 📝 **Note**
+> * Views the past orders of the person at the specified `INDEX`.
+> * The index **must be a positive integer** 1, 2, 3, …​
+
+> ❗ **Warning**
+> * The index refers to the index number shown in the displayed person list.
 
 Examples:
 * `list` followed by `viewOrders 2` views the past orders of the 2nd person in the address book.
@@ -296,10 +316,11 @@ Finds persons whose past orders contain the given keyword.
 
 Format: `findOrders KEYWORD`
 
-* The search is case-insensitive. e.g `milo` will match `Milo`
-* The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
-* Only the orders are searched.
-* Only customers with a dish containing the whole keyword will be matched.
+> 📝 **Note**
+> * The search is case-insensitive. e.g `milo` will match `Milo`
+> * The order of the keywords matter. e.g. `Milo Iced` will not match `Iced Milo`
+> * Only the orders are searched.
+> * Only customers with a dish containing the whole keyword will be matched.
 
 Examples:
 * `find milo` returns `John` and `Alice` who both ordered `milo`
